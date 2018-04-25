@@ -1,0 +1,422 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class TweetListItem extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+
+    this.formatDatetime = this.formatDatetime.bind(this);
+    this.deleteTweet = this.deleteTweet.bind(this);
+    this.navigateToTweet = this.navigateToTweet.bind(this);
+  }
+
+  formatDatetime(dt) {
+    let dateTime = new Date(dt).toDateString() + ' ' +
+    new Date(dt).toLocaleTimeString();
+
+    return dateTime;
+  }
+
+  deleteTweet(e) {
+    e.preventDefault();
+
+    if (window.confirm('Are you sure?')) {
+      if (this.props.tweet.retweet) {
+        this.props.deleteRetweet(this.props.tweet.retweet_id);
+      } else {
+        this.props.deleteTweet(this.props.tweet.id);
+      }
+    }
+  }
+
+  navigateToTweet(e) {
+    const path = \`/users/\${this.props.tweet.user_slug}/\${this.props.tweet.slug}\`;
+
+    if (e.target.tagName.toLowerCase() !== "a") {
+      this.props.history.push(path);
+    }
+  }
+
+  render() {
+    let deleteLink;
+    let component;
+    let tweetImage;
+
+    if (this.props.tweet.image) {
+      tweetImage =
+      _react2.default.createElement('div', { className: 'tweet_image tweet_list_item_image', __source: { fileName: _jsxFileName, lineNumber: 47 }, __self: this },
+        _react2.default.createElement('img', { src: this.props.tweet.image, alt: 'user uploaded pic', __source: { fileName: _jsxFileName, lineNumber: 48 }, __self: this }));
+
+
+    }
+
+    if (!!this.props.isCurrentUserPage && !!this.props.isCurrentUserPage()) {
+      deleteLink = _react2.default.createElement('a', { href: '#', onClick: this.deleteTweet, __source: { fileName: _jsxFileName, lineNumber: 54 }, __self: this }, 'Delete');
+    }
+
+    if (this.props.tweet.retweet) {
+      let retweet_user_path = \`/users/\${this.props.tweet.user_slug}\`;
+      component =
+      _react2.default.createElement('div', { className: 'tweet_list_item', __source: { fileName: _jsxFileName, lineNumber: 60 }, __self: this },
+        _react2.default.createElement('div', { className: 'inner_tweet_list_item retweet_list_item', onClick: this.navigateToTweet, __source: { fileName: _jsxFileName, lineNumber: 61 }, __self: this },
+          _react2.default.createElement('h5', { __source: { fileName: _jsxFileName, lineNumber: 62 }, __self: this }, 'Tweeted by ', _react2.default.createElement(_reactRouterDom.Link, { to: retweet_user_path, __source: { fileName: _jsxFileName, lineNumber: 62 }, __self: this }, '@', this.props.tweet.username), ' ', _react2.default.createElement('small', { __source: { fileName: _jsxFileName, lineNumber: 62 }, __self: this }, _react2.default.createElement('span', { __source: { fileName: _jsxFileName, lineNumber: 62 }, __self: this }, 'on'), ' ', _react2.default.createElement('b', { __source: { fileName: _jsxFileName, lineNumber: 62 }, __self: this }, this.formatDatetime(this.props.tweet.tweet_created_at)))),
+          _react2.default.createElement('p', { className: 'tweet_body_text', onClick: this.props.navigateToSearch, __source: { fileName: _jsxFileName, lineNumber: 63 }, __self: this }, this.props.tweet.body),
+          tweetImage),
+
+        _react2.default.createElement('div', { className: 'tweet_list_item_footer', __source: { fileName: _jsxFileName, lineNumber: 66 }, __self: this },
+          _react2.default.createElement('small', { className: 'list_item_datetime', __source: { fileName: _jsxFileName, lineNumber: 67 }, __self: this }, this.formatDatetime(this.props.tweet.created_at))),
+
+        _react2.default.createElement('div', { className: 'tweet_list_item_buttons', __source: { fileName: _jsxFileName, lineNumber: 69 }, __self: this },
+          deleteLink));
+
+
+
+    } else {
+      component =
+      _react2.default.createElement('div', { className: 'tweet_list_item', __source: { fileName: _jsxFileName, lineNumber: 76 }, __self: this },
+        _react2.default.createElement('div', { className: 'inner_tweet_list_item', onClick: this.navigateToTweet, __source: { fileName: _jsxFileName, lineNumber: 77 }, __self: this },
+          _react2.default.createElement('p', { className: 'tweet_body_text', onClick: this.props.navigateToSearch, __source: { fileName: _jsxFileName, lineNumber: 78 }, __self: this }, this.props.tweet.body),
+          tweetImage),
+
+        _react2.default.createElement('div', { className: 'tweet_list_item_footer', __source: { fileName: _jsxFileName, lineNumber: 81 }, __self: this },
+          _react2.default.createElement('small', { className: 'list_item_datetime', __source: { fileName: _jsxFileName, lineNumber: 82 }, __self: this }, this.formatDatetime(this.props.tweet.created_at))),
+
+        _react2.default.createElement('div', { className: 'tweet_list_item_buttons', __source: { fileName: _jsxFileName, lineNumber: 84 }, __self: this },
+          deleteLink));
+
+
+
+    }
+
+    return (
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 92 }, __self: this },
+        component));
+
+
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TweetListItem
+    tweet={
+        Object {
+            "body": "something here",
+            "id": 1,
+            "image": null,
+            "user_id": 5,
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="tweet_list_item"
+>
+        <div
+                className="inner_tweet_list_item"
+                onClick={[Function]}
+        >
+                <p
+                        className="tweet_body_text"
+                        onClick={undefined}
+                >
+                        something here
+                </p>
+        </div>
+        <div
+                className="tweet_list_item_footer"
+        >
+                <small
+                        className="list_item_datetime"
+                >
+                        Invalid Date Invalid Date
+                </small>
+        </div>
+        <div
+                className="tweet_list_item_buttons"
+        />
+</div>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="inner_tweet_list_item"
+            onClick={[Function]}
+>
+            <p
+                        className="tweet_body_text"
+                        onClick={undefined}
+            >
+                        something here
+            </p>
+</div>,
+          <div
+            className="tweet_list_item_footer"
+>
+            <small
+                        className="list_item_datetime"
+            >
+                        Invalid Date Invalid Date
+            </small>
+</div>,
+          <div
+            className="tweet_list_item_buttons"
+/>,
+        ],
+        "className": "tweet_list_item",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <p
+                className="tweet_body_text"
+                onClick={undefined}
+>
+                something here
+</p>,
+              undefined,
+            ],
+            "className": "inner_tweet_list_item",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "something here",
+                "className": "tweet_body_text",
+                "onClick": undefined,
+              },
+              "ref": null,
+              "rendered": "something here",
+              "type": "p",
+            },
+            undefined,
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <small
+              className="list_item_datetime"
+>
+              Invalid Date Invalid Date
+</small>,
+            "className": "tweet_list_item_footer",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Invalid Date Invalid Date",
+              "className": "list_item_datetime",
+            },
+            "ref": null,
+            "rendered": "Invalid Date Invalid Date",
+            "type": "small",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "tweet_list_item_buttons",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="tweet_list_item"
+>
+          <div
+                    className="inner_tweet_list_item"
+                    onClick={[Function]}
+          >
+                    <p
+                              className="tweet_body_text"
+                              onClick={undefined}
+                    >
+                              something here
+                    </p>
+          </div>
+          <div
+                    className="tweet_list_item_footer"
+          >
+                    <small
+                              className="list_item_datetime"
+                    >
+                              Invalid Date Invalid Date
+                    </small>
+          </div>
+          <div
+                    className="tweet_list_item_buttons"
+          />
+</div>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="inner_tweet_list_item"
+              onClick={[Function]}
+>
+              <p
+                            className="tweet_body_text"
+                            onClick={undefined}
+              >
+                            something here
+              </p>
+</div>,
+            <div
+              className="tweet_list_item_footer"
+>
+              <small
+                            className="list_item_datetime"
+              >
+                            Invalid Date Invalid Date
+              </small>
+</div>,
+            <div
+              className="tweet_list_item_buttons"
+/>,
+          ],
+          "className": "tweet_list_item",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="tweet_body_text"
+                  onClick={undefined}
+>
+                  something here
+</p>,
+                undefined,
+              ],
+              "className": "inner_tweet_list_item",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "something here",
+                  "className": "tweet_body_text",
+                  "onClick": undefined,
+                },
+                "ref": null,
+                "rendered": "something here",
+                "type": "p",
+              },
+              undefined,
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <small
+                className="list_item_datetime"
+>
+                Invalid Date Invalid Date
+</small>,
+              "className": "tweet_list_item_footer",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Invalid Date Invalid Date",
+                "className": "list_item_datetime",
+              },
+              "ref": null,
+              "rendered": "Invalid Date Invalid Date",
+              "type": "small",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "tweet_list_item_buttons",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

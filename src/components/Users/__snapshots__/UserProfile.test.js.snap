@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class UserProfile extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      userLoaded: false,
+      isFollowing: false };
+
+
+    this.fetchUser = this.fetchUser.bind(this);
+    this.fetchFollow = this.fetchFollow.bind(this);
+    this.createFollow = this.createFollow.bind(this);
+    this.deleteFollow = this.deleteFollow.bind(this);
+    this.lowerTweetCount = this.lowerTweetCount.bind(this);
+    this.raiseTweetCount = this.raiseTweetCount.bind(this);
+    this.deleteFollowFromList = this.deleteFollowFromList.bind(this);
+    this.isCurrentUserPage = this.isCurrentUserPage.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+    if (this._isMounted) {
+      this.fetchUser();
+    }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params.slug !== prevProps.match.params.slug) {
+      this.setState({ user: {}, userLoaded: false }, () => {
+        this.fetchUser();
+      });
+    }
+
+    if (this.props.currentUserChange !== prevProps.currentUserChange && this.isCurrentUserPage()) {
+      this.setState({ user: {}, userLoaded: false }, () => {
+        this.fetchUser();
+      });
+    }
+  }
+
+  isCurrentUserPage() {
+    return !!this.props.loggedIn && this.props.currentUser.id === this.state.user.id;
+  }
+
+  fetchUser() {
+    return (0, _users.getUserAPI)(this.props.match.params.slug).
+    then(data => {
+      data.all_tweet_count = Number(data.tweet_count) + Number(data.retweet_count);
+      this.setState({ user: data, userLoaded: true });
+      if (this.props.loggedIn) {
+        this.fetchFollow(data.id);
+      }
+    }).catch(() => {
+      this.props.displayMessage('Oops! Something went wrong loading this page!');
+    });
+  }
+
+  lowerTweetCount() {
+    let updatedUser = this.state.user;
+
+    if (this.isCurrentUserPage() && updatedUser.all_tweet_count) {
+      updatedUser.all_tweet_count -= 1;
+    }
+
+    this.setState({ user: updatedUser });
+    this.props.lowerSidebarTweetCount();
+  }
+
+  raiseTweetCount() {
+    let updatedUser = this.state.user;
+
+    if (this.isCurrentUserPage() && updatedUser.all_tweet_count) {
+      updatedUser.all_tweet_count += 1;
+    }
+
+    this.setState({ user: updatedUser });
+    this.props.raiseSidebarTweetCount();
+  }
+
+  fetchFollow(userID) {
+    return (0, _follows.getFollowAPI)(userID).
+    then(data => {
+      if (data.length > 0) {
+        this.setState({ isFollowing: true });
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  createFollow(userID) {
+    return (0, _follows.createFollowAPI)(userID).
+    then(data => {
+      let updatedUser = this.state.user;
+      if (updatedUser.followers) {
+        updatedUser.followers = Number(updatedUser.followers) + 1;
+      } else {
+        updatedUser.followers = 1;
+      }
+
+      this.setState({ isFollowing: true, user: updatedUser });
+      this.props.raiseSidebarFollowingCount();
+    }).catch(() => {
+      this.props.displayMessage('Oops! Something went wrong!');
+    });
+  }
+
+  deleteFollow(userID) {
+    return (0, _follows.deleteFollowAPI)(userID).
+    then(data => {
+      let updatedUser = this.state.user;
+      if (updatedUser.followers) {
+        updatedUser.followers = Number(updatedUser.followers) - 1;
+      }
+
+      this.setState({ isFollowing: false, user: updatedUser });
+      this.props.lowerSidebarFollowingCount();
+    }).catch(() => {
+      this.props.displayMessage('Oops! Something went wrong!');
+    });
+  }
+
+  deleteFollowFromList() {
+    let updatedUser = this.state.user;
+
+    this.props.lowerSidebarFollowingCount();
+    if (this.isCurrentUserPage() && updatedUser.following) {
+      updatedUser.following = Number(updatedUser.following) - 1;
+      this.setState({ user: updatedUser });
+    }
+  }
+
+  render() {
+    const sameUser = this.state.user.slug === this.props.match.params.slug;
+    let userContent;
+
+    if (this._isMounted && this.state.userLoaded && sameUser) {
+      userContent =
+      _react2.default.createElement(_reactRouterDom.Switch, { __source: { fileName: _jsxFileName, lineNumber: 152 }, __self: this },
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/users/:slug', render: props => _react2.default.createElement(_Tweets.UserTweetsList, Object.assign({}, props, { user_id: this.state.user.id, loggedIn: this.props.loggedIn, isCurrentUserPage: this.isCurrentUserPage, displayMessage: this.props.displayMessage, navigateToSearch: this.props.navigateToSearch, lowerTweetCount: this.lowerTweetCount, raiseTweetCount: this.raiseTweetCount, raiseSidebarTweetCount: this.props.raiseSidebarTweetCount, __source: { fileName: _jsxFileName, lineNumber: 153 }, __self: this })), __source: { fileName: _jsxFileName, lineNumber: 153 }, __self: this }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/users/:slug/followers', render: () => _react2.default.createElement(_Follows.UserFollowersList, { user_id: this.state.user.id, loggedIn: this.props.loggedIn, displayMessage: this.props.displayMessage, __source: { fileName: _jsxFileName, lineNumber: 154 }, __self: this }), __source: { fileName: _jsxFileName, lineNumber: 154 }, __self: this }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/users/:slug/following', render: () => _react2.default.createElement(_Follows.UserFollowingsList, { user_id: this.state.user.id, loggedIn: this.props.loggedIn, isCurrentUserPage: this.isCurrentUserPage, displayMessage: this.props.displayMessage, deleteFollowFromList: this.deleteFollowFromList, __source: { fileName: _jsxFileName, lineNumber: 155 }, __self: this }), __source: { fileName: _jsxFileName, lineNumber: 155 }, __self: this }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/users/:slug/:tweet_slug', render: props => _react2.default.createElement(_Tweets.TweetModal, Object.assign({}, props, { loggedIn: this.props.loggedIn, currentUser: this.props.currentUser, displayMessage: this.props.displayMessage, navigateToSearch: this.props.navigateToSearch, raiseSidebarTweetCount: this.props.raiseSidebarTweetCount, isCurrentUserPage: this.isCurrentUserPage, __source: { fileName: _jsxFileName, lineNumber: 156 }, __self: this })), __source: { fileName: _jsxFileName, lineNumber: 156 }, __self: this }));
+
+
+    } else {
+      userContent = _react2.default.createElement(_Misc.PageLoading, { __source: { fileName: _jsxFileName, lineNumber: 160 }, __self: this });
+    }
+
+    return (
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 164 }, __self: this },
+        _react2.default.createElement(_.UserProfileHeader, { user: this.state.user, isCurrentUserPage: this.isCurrentUserPage, createFollow: this.createFollow, deleteFollow: this.deleteFollow, loggedIn: this.props.loggedIn, currentUser: this.props.currentUser, isFollowing: this.state.isFollowing, __source: { fileName: _jsxFileName, lineNumber: 165 }, __self: this }),
+        _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 166 }, __self: this },
+          userContent)));
+
+
+
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <UserProfile
+    match={
+        Object {
+            "params": Object {
+              "id": 5,
+            },
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <UserProfileHeader
+          createFollow={[Function]}
+          currentUser={undefined}
+          deleteFollow={[Function]}
+          isCurrentUserPage={[Function]}
+          isFollowing={false}
+          loggedIn={undefined}
+          user={Object {}}
+/>,
+        <div>
+          <PageLoading />
+</div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "createFollow": [Function],
+          "currentUser": undefined,
+          "deleteFollow": [Function],
+          "isCurrentUserPage": [Function],
+          "isFollowing": false,
+          "loggedIn": undefined,
+          "user": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <PageLoading />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <UserProfileHeader
+            createFollow={[Function]}
+            currentUser={undefined}
+            deleteFollow={[Function]}
+            isCurrentUserPage={[Function]}
+            isFollowing={false}
+            loggedIn={undefined}
+            user={Object {}}
+/>,
+          <div>
+            <PageLoading />
+</div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "createFollow": [Function],
+            "currentUser": undefined,
+            "deleteFollow": [Function],
+            "isCurrentUserPage": [Function],
+            "isFollowing": false,
+            "loggedIn": undefined,
+            "user": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <PageLoading />,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

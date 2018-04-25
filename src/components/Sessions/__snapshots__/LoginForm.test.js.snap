@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class LoginForm extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '' };
+
+
+    this.updateUsername = this.updateUsername.bind(this);
+    this.updatePassword = this.updatePassword.bind(this);
+    this.submitForm = this.submitForm.bind(this);
+  }
+
+  updateUsername(e) {
+    this.setState({ username: e.target.value });
+  }
+
+  updatePassword(e) {
+    this.setState({ password: e.target.value });
+  }
+
+  submitForm() {
+    const loginData = this.state;
+    this.setState({ username: '', password: '' });
+
+    return (0, _sessions.loginAPI)(loginData).
+    then(data => {
+      this.props.appLogin(data.token);
+    }).catch(() => {
+      this.props.displayMessage('Incorrect username / password');
+    });
+  }
+
+  render() {
+    let component =
+    _react2.default.createElement(_reactBootstrap.Navbar.Form, { id: 'login_form', pullRight: true, __source: { fileName: _jsxFileName, lineNumber: 40 }, __self: this },
+      _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 41 }, __self: this },
+        _react2.default.createElement(_reactBootstrap.FormControl, { id: 'username_field', type: 'text', onChange: this.updateUsername, value: this.state.username, placeholder: 'Username', __source: { fileName: _jsxFileName, lineNumber: 42 }, __self: this })),
+
+      _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 44 }, __self: this },
+        _react2.default.createElement(_reactBootstrap.FormControl, { id: 'password_field', type: 'password', onChange: this.updatePassword, value: this.state.password, placeholder: 'Password', __source: { fileName: _jsxFileName, lineNumber: 45 }, __self: this })),
+
+      _react2.default.createElement(_reactBootstrap.Button, { onClick: this.submitForm, disabled: !this.state.username || !this.state.password, __source: { fileName: _jsxFileName, lineNumber: 47 }, __self: this }, 'Sign In'));
+
+
+
+    return component;
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <LoginForm
+    appLogin={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <FormGroup
+          bsClass="form-group"
+>
+          <FormControl
+                    bsClass="form-control"
+                    componentClass="input"
+                    id="username_field"
+                    onChange={[Function]}
+                    placeholder="Username"
+                    type="text"
+                    value=""
+          />
+</FormGroup>,
+        <FormGroup
+          bsClass="form-group"
+>
+          <FormControl
+                    bsClass="form-control"
+                    componentClass="input"
+                    id="password_field"
+                    onChange={[Function]}
+                    placeholder="Password"
+                    type="password"
+                    value=""
+          />
+</FormGroup>,
+        <Button
+          active={false}
+          block={false}
+          bsClass="btn"
+          bsStyle="default"
+          disabled={true}
+          onClick={[Function]}
+>
+          Sign In
+</Button>,
+      ],
+      "componentClass": "div",
+      "id": "login_form",
+      "pullLeft": false,
+      "pullRight": true,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "bsClass": "form-group",
+          "children": <FormControl
+            bsClass="form-control"
+            componentClass="input"
+            id="username_field"
+            onChange={[Function]}
+            placeholder="Username"
+            type="text"
+            value=""
+/>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bsClass": "form-control",
+            "componentClass": "input",
+            "id": "username_field",
+            "onChange": [Function],
+            "placeholder": "Username",
+            "type": "text",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "bsClass": "form-group",
+          "children": <FormControl
+            bsClass="form-control"
+            componentClass="input"
+            id="password_field"
+            onChange={[Function]}
+            placeholder="Password"
+            type="password"
+            value=""
+/>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bsClass": "form-control",
+            "componentClass": "input",
+            "id": "password_field",
+            "onChange": [Function],
+            "placeholder": "Password",
+            "type": "password",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "active": false,
+          "block": false,
+          "bsClass": "btn",
+          "bsStyle": "default",
+          "children": "Sign In",
+          "disabled": true,
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "Sign In",
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <FormGroup
+            bsClass="form-group"
+>
+            <FormControl
+                        bsClass="form-control"
+                        componentClass="input"
+                        id="username_field"
+                        onChange={[Function]}
+                        placeholder="Username"
+                        type="text"
+                        value=""
+            />
+</FormGroup>,
+          <FormGroup
+            bsClass="form-group"
+>
+            <FormControl
+                        bsClass="form-control"
+                        componentClass="input"
+                        id="password_field"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        type="password"
+                        value=""
+            />
+</FormGroup>,
+          <Button
+            active={false}
+            block={false}
+            bsClass="btn"
+            bsStyle="default"
+            disabled={true}
+            onClick={[Function]}
+>
+            Sign In
+</Button>,
+        ],
+        "componentClass": "div",
+        "id": "login_form",
+        "pullLeft": false,
+        "pullRight": true,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bsClass": "form-group",
+            "children": <FormControl
+              bsClass="form-control"
+              componentClass="input"
+              id="username_field"
+              onChange={[Function]}
+              placeholder="Username"
+              type="text"
+              value=""
+/>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "form-control",
+              "componentClass": "input",
+              "id": "username_field",
+              "onChange": [Function],
+              "placeholder": "Username",
+              "type": "text",
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bsClass": "form-group",
+            "children": <FormControl
+              bsClass="form-control"
+              componentClass="input"
+              id="password_field"
+              onChange={[Function]}
+              placeholder="Password"
+              type="password"
+              value=""
+/>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "form-control",
+              "componentClass": "input",
+              "id": "password_field",
+              "onChange": [Function],
+              "placeholder": "Password",
+              "type": "password",
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "active": false,
+            "block": false,
+            "bsClass": "btn",
+            "bsStyle": "default",
+            "children": "Sign In",
+            "disabled": true,
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "Sign In",
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

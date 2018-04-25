@@ -1,0 +1,791 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class EditUserForm extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newName: this.props.currentUser.name || '',
+      newUsername: this.props.currentUser.username || '',
+      newPassword: '' };
+
+
+    this.isValidForm = this.isValidForm.bind(this);
+    this.isValidPassword = this.isValidPassword.bind(this);
+    this.updateName = this.updateName.bind(this);
+    this.updateUsername = this.updateUsername.bind(this);
+    this.updatePassword = this.updatePassword.bind(this);
+    this.submitForm = this.submitForm.bind(this);
+  }
+
+  updateName(e) {
+    this.setState({ newName: e.target.value });
+  }
+
+  updateUsername(e) {
+    this.setState({ newUsername: e.target.value });
+  }
+
+  updatePassword(e) {
+    this.setState({ newPassword: e.target.value });
+  }
+
+  isValidPassword() {
+    return this.state.newPassword.length === 0 || this.state.newPassword.length >= 8;
+  }
+
+  isValidForm() {
+    return this.state.newName.length >= 3 && this.state.newUsername.length >= 3 && this.isValidPassword();
+  }
+
+  submitForm() {
+    let userData = {
+      id: this.props.currentUser.id,
+      name: this.state.newName,
+      username: this.state.newUsername };
+
+
+    if (this.state.newPassword.length > 0) {
+      userData.password = this.state.newPassword;
+    }
+
+    this.props.editUser(userData);
+  }
+
+  render() {
+    return (
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 57 }, __self: this },
+        _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 58 }, __self: this },
+          _react2.default.createElement(_reactBootstrap.ControlLabel, { htmlFor: 'userNameForm', __source: { fileName: _jsxFileName, lineNumber: 59 }, __self: this }, 'Name'),
+          _react2.default.createElement(_reactBootstrap.FormControl, { id: 'userNameForm', type: 'text', defaultValue: this.props.currentUser.name, onChange: this.updateName, __source: { fileName: _jsxFileName, lineNumber: 60 }, __self: this })),
+
+        _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 62 }, __self: this },
+          _react2.default.createElement(_reactBootstrap.ControlLabel, { htmlFor: 'userUsernameForm', __source: { fileName: _jsxFileName, lineNumber: 63 }, __self: this }, 'Username'),
+          _react2.default.createElement(_reactBootstrap.FormControl, { id: 'userUsernameForm', type: 'text', defaultValue: this.props.currentUser.username, onChange: this.updateUsername, __source: { fileName: _jsxFileName, lineNumber: 64 }, __self: this })),
+
+        _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 66 }, __self: this },
+          _react2.default.createElement(_reactBootstrap.ControlLabel, { htmlFor: 'userPasswordForm', __source: { fileName: _jsxFileName, lineNumber: 67 }, __self: this }, 'New Password'),
+          _react2.default.createElement(_reactBootstrap.FormControl, { id: 'userPasswordForm', type: 'password', onChange: this.updatePassword, __source: { fileName: _jsxFileName, lineNumber: 68 }, __self: this })),
+
+        _react2.default.createElement('div', { id: 'edit_form_buttons', __source: { fileName: _jsxFileName, lineNumber: 70 }, __self: this },
+          _react2.default.createElement(_reactBootstrap.Button, { id: 'submit_form', disabled: !this.isValidForm(), onClick: this.submitForm, __source: { fileName: _jsxFileName, lineNumber: 71 }, __self: this }, 'Update Account'),
+          _react2.default.createElement(_reactBootstrap.Button, { onClick: this.props.destroyAccount, __source: { fileName: _jsxFileName, lineNumber: 72 }, __self: this }, 'Delete Account'))));
+
+
+
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <EditUserForm
+    currentUser={
+        Object {
+            "all_tweet_count": 2,
+            "followers": 1,
+            "following": 1,
+            "id": 1,
+            "name": "Ryan",
+            "retweet_count": 1,
+            "slug": "rg",
+            "token": "123",
+            "tweet_count": 1,
+            "username": "RG",
+          }
+    }
+    editUser={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <FormGroup
+          bsClass="form-group"
+>
+          <ControlLabel
+                    bsClass="control-label"
+                    htmlFor="userNameForm"
+                    srOnly={false}
+          >
+                    Name
+          </ControlLabel>
+          <FormControl
+                    bsClass="form-control"
+                    componentClass="input"
+                    defaultValue="Ryan"
+                    id="userNameForm"
+                    onChange={[Function]}
+                    type="text"
+          />
+</FormGroup>,
+        <FormGroup
+          bsClass="form-group"
+>
+          <ControlLabel
+                    bsClass="control-label"
+                    htmlFor="userUsernameForm"
+                    srOnly={false}
+          >
+                    Username
+          </ControlLabel>
+          <FormControl
+                    bsClass="form-control"
+                    componentClass="input"
+                    defaultValue="RG"
+                    id="userUsernameForm"
+                    onChange={[Function]}
+                    type="text"
+          />
+</FormGroup>,
+        <FormGroup
+          bsClass="form-group"
+>
+          <ControlLabel
+                    bsClass="control-label"
+                    htmlFor="userPasswordForm"
+                    srOnly={false}
+          >
+                    New Password
+          </ControlLabel>
+          <FormControl
+                    bsClass="form-control"
+                    componentClass="input"
+                    id="userPasswordForm"
+                    onChange={[Function]}
+                    type="password"
+          />
+</FormGroup>,
+        <div
+          id="edit_form_buttons"
+>
+          <Button
+                    active={false}
+                    block={false}
+                    bsClass="btn"
+                    bsStyle="default"
+                    disabled={true}
+                    id="submit_form"
+                    onClick={[Function]}
+          >
+                    Update Account
+          </Button>
+          <Button
+                    active={false}
+                    block={false}
+                    bsClass="btn"
+                    bsStyle="default"
+                    disabled={false}
+                    onClick={undefined}
+          >
+                    Delete Account
+          </Button>
+</div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "bsClass": "form-group",
+          "children": Array [
+            <ControlLabel
+              bsClass="control-label"
+              htmlFor="userNameForm"
+              srOnly={false}
+>
+              Name
+</ControlLabel>,
+            <FormControl
+              bsClass="form-control"
+              componentClass="input"
+              defaultValue="Ryan"
+              id="userNameForm"
+              onChange={[Function]}
+              type="text"
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "control-label",
+              "children": "Name",
+              "htmlFor": "userNameForm",
+              "srOnly": false,
+            },
+            "ref": null,
+            "rendered": "Name",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "form-control",
+              "componentClass": "input",
+              "defaultValue": "Ryan",
+              "id": "userNameForm",
+              "onChange": [Function],
+              "type": "text",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "bsClass": "form-group",
+          "children": Array [
+            <ControlLabel
+              bsClass="control-label"
+              htmlFor="userUsernameForm"
+              srOnly={false}
+>
+              Username
+</ControlLabel>,
+            <FormControl
+              bsClass="form-control"
+              componentClass="input"
+              defaultValue="RG"
+              id="userUsernameForm"
+              onChange={[Function]}
+              type="text"
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "control-label",
+              "children": "Username",
+              "htmlFor": "userUsernameForm",
+              "srOnly": false,
+            },
+            "ref": null,
+            "rendered": "Username",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "form-control",
+              "componentClass": "input",
+              "defaultValue": "RG",
+              "id": "userUsernameForm",
+              "onChange": [Function],
+              "type": "text",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "bsClass": "form-group",
+          "children": Array [
+            <ControlLabel
+              bsClass="control-label"
+              htmlFor="userPasswordForm"
+              srOnly={false}
+>
+              New Password
+</ControlLabel>,
+            <FormControl
+              bsClass="form-control"
+              componentClass="input"
+              id="userPasswordForm"
+              onChange={[Function]}
+              type="password"
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "control-label",
+              "children": "New Password",
+              "htmlFor": "userPasswordForm",
+              "srOnly": false,
+            },
+            "ref": null,
+            "rendered": "New Password",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "form-control",
+              "componentClass": "input",
+              "id": "userPasswordForm",
+              "onChange": [Function],
+              "type": "password",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Button
+              active={false}
+              block={false}
+              bsClass="btn"
+              bsStyle="default"
+              disabled={true}
+              id="submit_form"
+              onClick={[Function]}
+>
+              Update Account
+</Button>,
+            <Button
+              active={false}
+              block={false}
+              bsClass="btn"
+              bsStyle="default"
+              disabled={false}
+              onClick={undefined}
+>
+              Delete Account
+</Button>,
+          ],
+          "id": "edit_form_buttons",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "block": false,
+              "bsClass": "btn",
+              "bsStyle": "default",
+              "children": "Update Account",
+              "disabled": true,
+              "id": "submit_form",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Update Account",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "block": false,
+              "bsClass": "btn",
+              "bsStyle": "default",
+              "children": "Delete Account",
+              "disabled": false,
+              "onClick": undefined,
+            },
+            "ref": null,
+            "rendered": "Delete Account",
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <FormGroup
+            bsClass="form-group"
+>
+            <ControlLabel
+                        bsClass="control-label"
+                        htmlFor="userNameForm"
+                        srOnly={false}
+            >
+                        Name
+            </ControlLabel>
+            <FormControl
+                        bsClass="form-control"
+                        componentClass="input"
+                        defaultValue="Ryan"
+                        id="userNameForm"
+                        onChange={[Function]}
+                        type="text"
+            />
+</FormGroup>,
+          <FormGroup
+            bsClass="form-group"
+>
+            <ControlLabel
+                        bsClass="control-label"
+                        htmlFor="userUsernameForm"
+                        srOnly={false}
+            >
+                        Username
+            </ControlLabel>
+            <FormControl
+                        bsClass="form-control"
+                        componentClass="input"
+                        defaultValue="RG"
+                        id="userUsernameForm"
+                        onChange={[Function]}
+                        type="text"
+            />
+</FormGroup>,
+          <FormGroup
+            bsClass="form-group"
+>
+            <ControlLabel
+                        bsClass="control-label"
+                        htmlFor="userPasswordForm"
+                        srOnly={false}
+            >
+                        New Password
+            </ControlLabel>
+            <FormControl
+                        bsClass="form-control"
+                        componentClass="input"
+                        id="userPasswordForm"
+                        onChange={[Function]}
+                        type="password"
+            />
+</FormGroup>,
+          <div
+            id="edit_form_buttons"
+>
+            <Button
+                        active={false}
+                        block={false}
+                        bsClass="btn"
+                        bsStyle="default"
+                        disabled={true}
+                        id="submit_form"
+                        onClick={[Function]}
+            >
+                        Update Account
+            </Button>
+            <Button
+                        active={false}
+                        block={false}
+                        bsClass="btn"
+                        bsStyle="default"
+                        disabled={false}
+                        onClick={undefined}
+            >
+                        Delete Account
+            </Button>
+</div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bsClass": "form-group",
+            "children": Array [
+              <ControlLabel
+                bsClass="control-label"
+                htmlFor="userNameForm"
+                srOnly={false}
+>
+                Name
+</ControlLabel>,
+              <FormControl
+                bsClass="form-control"
+                componentClass="input"
+                defaultValue="Ryan"
+                id="userNameForm"
+                onChange={[Function]}
+                type="text"
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "control-label",
+                "children": "Name",
+                "htmlFor": "userNameForm",
+                "srOnly": false,
+              },
+              "ref": null,
+              "rendered": "Name",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "form-control",
+                "componentClass": "input",
+                "defaultValue": "Ryan",
+                "id": "userNameForm",
+                "onChange": [Function],
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bsClass": "form-group",
+            "children": Array [
+              <ControlLabel
+                bsClass="control-label"
+                htmlFor="userUsernameForm"
+                srOnly={false}
+>
+                Username
+</ControlLabel>,
+              <FormControl
+                bsClass="form-control"
+                componentClass="input"
+                defaultValue="RG"
+                id="userUsernameForm"
+                onChange={[Function]}
+                type="text"
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "control-label",
+                "children": "Username",
+                "htmlFor": "userUsernameForm",
+                "srOnly": false,
+              },
+              "ref": null,
+              "rendered": "Username",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "form-control",
+                "componentClass": "input",
+                "defaultValue": "RG",
+                "id": "userUsernameForm",
+                "onChange": [Function],
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bsClass": "form-group",
+            "children": Array [
+              <ControlLabel
+                bsClass="control-label"
+                htmlFor="userPasswordForm"
+                srOnly={false}
+>
+                New Password
+</ControlLabel>,
+              <FormControl
+                bsClass="form-control"
+                componentClass="input"
+                id="userPasswordForm"
+                onChange={[Function]}
+                type="password"
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "control-label",
+                "children": "New Password",
+                "htmlFor": "userPasswordForm",
+                "srOnly": false,
+              },
+              "ref": null,
+              "rendered": "New Password",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "form-control",
+                "componentClass": "input",
+                "id": "userPasswordForm",
+                "onChange": [Function],
+                "type": "password",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Button
+                active={false}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                disabled={true}
+                id="submit_form"
+                onClick={[Function]}
+>
+                Update Account
+</Button>,
+              <Button
+                active={false}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                disabled={false}
+                onClick={undefined}
+>
+                Delete Account
+</Button>,
+            ],
+            "id": "edit_form_buttons",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": false,
+                "block": false,
+                "bsClass": "btn",
+                "bsStyle": "default",
+                "children": "Update Account",
+                "disabled": true,
+                "id": "submit_form",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Update Account",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": false,
+                "block": false,
+                "bsClass": "btn",
+                "bsStyle": "default",
+                "children": "Delete Account",
+                "disabled": false,
+                "onClick": undefined,
+              },
+              "ref": null,
+              "rendered": "Delete Account",
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

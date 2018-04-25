@@ -1,0 +1,503 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class Account extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+
+    this.destroyAccount = this.destroyAccount.bind(this);
+  }
+
+  destroyAccount() {
+    if (window.confirm("Are you sure?")) {
+      this.props.deleteAccount(this.props.currentUser.id);
+    }
+  }
+
+  render() {
+    if (this.props.loggedIn) {
+      return (
+        _react2.default.createElement('div', { className: 'page_form', id: 'edit_user_form', __source: { fileName: _jsxFileName, lineNumber: 22 }, __self: this },
+          _react2.default.createElement('h1', { __source: { fileName: _jsxFileName, lineNumber: 23 }, __self: this }, this.props.currentUser.name, '\\'s Account'),
+          _react2.default.createElement('div', { className: 'user_stats user_form_stats user_profile_info', __source: { fileName: _jsxFileName, lineNumber: 24 }, __self: this },
+            _react2.default.createElement('dl', { __source: { fileName: _jsxFileName, lineNumber: 25 }, __self: this },
+              _react2.default.createElement('dt', { __source: { fileName: _jsxFileName, lineNumber: 26 }, __self: this }, 'Following'),
+              _react2.default.createElement('dd', { __source: { fileName: _jsxFileName, lineNumber: 27 }, __self: this }, this.props.currentUser.following)),
+
+            _react2.default.createElement('dl', { __source: { fileName: _jsxFileName, lineNumber: 29 }, __self: this },
+              _react2.default.createElement('dt', { __source: { fileName: _jsxFileName, lineNumber: 30 }, __self: this }, 'Followers'),
+              _react2.default.createElement('dd', { __source: { fileName: _jsxFileName, lineNumber: 31 }, __self: this }, this.props.currentUser.followers))),
+
+
+          _react2.default.createElement(_.EditUserForm, { destroyAccount: this.destroyAccount, currentUser: this.props.currentUser, editUser: this.props.editUser, displayMessage: this.props.displayMessage, __source: { fileName: _jsxFileName, lineNumber: 34 }, __self: this })));
+
+
+    } else if (this.props.loggedIn === undefined) {
+      return _react2.default.createElement(_Misc.PageLoading, { __source: { fileName: _jsxFileName, lineNumber: 38 }, __self: this });
+    } else {
+      return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/', __source: { fileName: _jsxFileName, lineNumber: 40 }, __self: this });
+    }
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Account
+    currentUser={
+        Object {
+            "all_tweet_count": 2,
+            "followers": 1,
+            "following": 1,
+            "id": 1,
+            "name": "Ryan",
+            "retweet_count": 1,
+            "slug": "rg",
+            "token": "123",
+            "tweet_count": 1,
+            "username": "RG",
+          }
+    }
+    deleteAccount={[Function]}
+    editUser={[Function]}
+    loggedIn={true}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1>
+          Ryan
+          's Account
+</h1>,
+        <div
+          className="user_stats user_form_stats user_profile_info"
+>
+          <dl>
+                    <dt>
+                              Following
+                    </dt>
+                    <dd>
+                              1
+                    </dd>
+          </dl>
+          <dl>
+                    <dt>
+                              Followers
+                    </dt>
+                    <dd>
+                              1
+                    </dd>
+          </dl>
+</div>,
+        <EditUserForm
+          currentUser={
+                    Object {
+                              "all_tweet_count": 2,
+                              "followers": 1,
+                              "following": 1,
+                              "id": 1,
+                              "name": "Ryan",
+                              "retweet_count": 1,
+                              "slug": "rg",
+                              "token": "123",
+                              "tweet_count": 1,
+                              "username": "RG",
+                            }
+          }
+          destroyAccount={[Function]}
+          displayMessage={undefined}
+          editUser={[Function]}
+/>,
+      ],
+      "className": "page_form",
+      "id": "edit_user_form",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Ryan",
+            "'s Account",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Ryan",
+          "'s Account",
+        ],
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <dl>
+              <dt>
+                            Following
+              </dt>
+              <dd>
+                            1
+              </dd>
+</dl>,
+            <dl>
+              <dt>
+                            Followers
+              </dt>
+              <dd>
+                            1
+              </dd>
+</dl>,
+          ],
+          "className": "user_stats user_form_stats user_profile_info",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <dt>
+                  Following
+</dt>,
+                <dd>
+                  1
+</dd>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Following",
+                },
+                "ref": null,
+                "rendered": "Following",
+                "type": "dt",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": 1,
+                },
+                "ref": null,
+                "rendered": 1,
+                "type": "dd",
+              },
+            ],
+            "type": "dl",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <dt>
+                  Followers
+</dt>,
+                <dd>
+                  1
+</dd>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Followers",
+                },
+                "ref": null,
+                "rendered": "Followers",
+                "type": "dt",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": 1,
+                },
+                "ref": null,
+                "rendered": 1,
+                "type": "dd",
+              },
+            ],
+            "type": "dl",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "currentUser": Object {
+            "all_tweet_count": 2,
+            "followers": 1,
+            "following": 1,
+            "id": 1,
+            "name": "Ryan",
+            "retweet_count": 1,
+            "slug": "rg",
+            "token": "123",
+            "tweet_count": 1,
+            "username": "RG",
+          },
+          "destroyAccount": [Function],
+          "displayMessage": undefined,
+          "editUser": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            Ryan
+            's Account
+</h1>,
+          <div
+            className="user_stats user_form_stats user_profile_info"
+>
+            <dl>
+                        <dt>
+                                    Following
+                        </dt>
+                        <dd>
+                                    1
+                        </dd>
+            </dl>
+            <dl>
+                        <dt>
+                                    Followers
+                        </dt>
+                        <dd>
+                                    1
+                        </dd>
+            </dl>
+</div>,
+          <EditUserForm
+            currentUser={
+                        Object {
+                                    "all_tweet_count": 2,
+                                    "followers": 1,
+                                    "following": 1,
+                                    "id": 1,
+                                    "name": "Ryan",
+                                    "retweet_count": 1,
+                                    "slug": "rg",
+                                    "token": "123",
+                                    "tweet_count": 1,
+                                    "username": "RG",
+                                  }
+            }
+            destroyAccount={[Function]}
+            displayMessage={undefined}
+            editUser={[Function]}
+/>,
+        ],
+        "className": "page_form",
+        "id": "edit_user_form",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Ryan",
+              "'s Account",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Ryan",
+            "'s Account",
+          ],
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <dl>
+                <dt>
+                                Following
+                </dt>
+                <dd>
+                                1
+                </dd>
+</dl>,
+              <dl>
+                <dt>
+                                Followers
+                </dt>
+                <dd>
+                                1
+                </dd>
+</dl>,
+            ],
+            "className": "user_stats user_form_stats user_profile_info",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <dt>
+                    Following
+</dt>,
+                  <dd>
+                    1
+</dd>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Following",
+                  },
+                  "ref": null,
+                  "rendered": "Following",
+                  "type": "dt",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": 1,
+                  },
+                  "ref": null,
+                  "rendered": 1,
+                  "type": "dd",
+                },
+              ],
+              "type": "dl",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <dt>
+                    Followers
+</dt>,
+                  <dd>
+                    1
+</dd>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Followers",
+                  },
+                  "ref": null,
+                  "rendered": "Followers",
+                  "type": "dt",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": 1,
+                  },
+                  "ref": null,
+                  "rendered": 1,
+                  "type": "dd",
+                },
+              ],
+              "type": "dl",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "currentUser": Object {
+              "all_tweet_count": 2,
+              "followers": 1,
+              "following": 1,
+              "id": 1,
+              "name": "Ryan",
+              "retweet_count": 1,
+              "slug": "rg",
+              "token": "123",
+              "tweet_count": 1,
+              "username": "RG",
+            },
+            "destroyAccount": [Function],
+            "displayMessage": undefined,
+            "editUser": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

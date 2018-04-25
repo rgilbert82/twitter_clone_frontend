@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class UserFollowersList extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = { followers: [] };
+
+    this.fetchFollowers = this.fetchFollowers.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+    if (this._isMounted) {
+      this.fetchFollowers();
+    }
+  }
+
+  componendWillUnmount() {
+    this._isMounted = false;
+  }
+
+  fetchFollowers() {
+    return (0, _follows.getUserFollowersAPI)(this.props.user_id).
+    then(data => {
+      this.setState({ followers: data });
+    }).catch(() => {
+      this.props.displayMessage('There was an error loading the followers');
+    });
+  }
+
+  render() {
+    const followersList = this.state.followers.map(user => {
+      return (
+        _react2.default.createElement('li', { className: 'list_item', key: user.id, __source: { fileName: _jsxFileName, lineNumber: 36 }, __self: this },
+          _react2.default.createElement(_Users.UserListItem, { user: user, __source: { fileName: _jsxFileName, lineNumber: 37 }, __self: this })));
+
+
+    });
+
+    return (
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 43 }, __self: this },
+        _react2.default.createElement('h2', { className: 'sub_header', __source: { fileName: _jsxFileName, lineNumber: 44 }, __self: this }, 'Followers'),
+        _react2.default.createElement('ul', { __source: { fileName: _jsxFileName, lineNumber: 45 }, __self: this },
+          followersList)));
+
+
+
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <UserFollowersList
+    loggedIn={true}
+    user_id={1}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h2
+          className="sub_header"
+>
+          Followers
+</h2>,
+        <ul>
+          
+</ul>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Followers",
+          "className": "sub_header",
+        },
+        "ref": null,
+        "rendered": "Followers",
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [],
+        },
+        "ref": null,
+        "rendered": Array [],
+        "type": "ul",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h2
+            className="sub_header"
+>
+            Followers
+</h2>,
+          <ul>
+            
+</ul>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Followers",
+            "className": "sub_header",
+          },
+          "ref": null,
+          "rendered": "Followers",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [],
+          },
+          "ref": null,
+          "rendered": Array [],
+          "type": "ul",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

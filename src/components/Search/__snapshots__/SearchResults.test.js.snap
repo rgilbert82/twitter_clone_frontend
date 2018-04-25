@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class SearchResults extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: [],
+      resultsFeed: [],
+      resultsLoaded: false };
+
+
+    this.fetchResults = this.fetchResults.bind(this);
+    this.scrollListener = this.scrollListener.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+    if (this._isMounted) {
+      this.fetchResults();
+      window.addEventListener('scroll', this.scrollListener);
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollListener);
+    this._isMounted = false;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const elements = document.getElementsByClassName('tweet_body_text');
+
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({ results: [], resultsLoaded: false }, () => {
+        this.fetchResults();
+      });
+    }
+
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].innerHTML = (0, _misc.hashtagify)(elements[i].innerHTML);
+    }
+  }
+
+  scrollListener() {
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2) {
+      if (this.state.resultsFeed.length < this.state.results.length) {
+        this.setState({ resultsFeed: this.state.results.slice(0, this.state.resultsFeed.length + 8) });
+      }
+    }
+  }
+
+  fetchResults() {
+    const searchField = this.props.match.params.search_field;
+
+    return (0, _search.getSearchResultsAPI)(searchField).
+    then(data => {
+      this.setState({ results: data, resultsFeed: data.slice(0, 8), resultsLoaded: true });
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  render() {
+    let pluralize;
+    let allTweets;
+    let content;
+
+    if (this.state.resultsLoaded && this.state.results.length === 0) {
+      content =
+      _react2.default.createElement('div', { id: 'section_message', __source: { fileName: _jsxFileName, lineNumber: 73 }, __self: this },
+        _react2.default.createElement('h2', { __source: { fileName: _jsxFileName, lineNumber: 74 }, __self: this }, 'Your search returned 0 results'));
+
+
+    } else if (this.state.resultsLoaded) {
+      allTweets = this.state.resultsFeed.map(tweet => {
+        return (
+          _react2.default.createElement('li', { className: 'list_item', key: tweet.id, __source: { fileName: _jsxFileName, lineNumber: 80 }, __self: this },
+            _react2.default.createElement(_Tweets.TweetListItem, { history: this.props.history, navigateToSearch: this.props.navigateToSearch, tweet: tweet, loggedIn: this.props.loggedIn, displayMessage: this.props.displayMessage, __source: { fileName: _jsxFileName, lineNumber: 81 }, __self: this })));
+
+
+      });
+
+      if (this.state.results.length !== 1) {
+        pluralize = "s";
+      } else {
+        pluralize = "";
+      }
+
+      content =
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 93 }, __self: this },
+        _react2.default.createElement('h3', { className: 'search_results_header', __source: { fileName: _jsxFileName, lineNumber: 94 }, __self: this }, '"#', this.props.match.params.search_field, '" returned ', this.state.results.length, ' result', pluralize),
+        _react2.default.createElement('ul', { __source: { fileName: _jsxFileName, lineNumber: 95 }, __self: this },
+          allTweets));
+
+
+
+    } else {
+      content = _react2.default.createElement(_Misc.PageLoading, { __source: { fileName: _jsxFileName, lineNumber: 101 }, __self: this });
+    }
+
+    return _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 104 }, __self: this }, content);
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SearchResults
+    currentUser={
+        Object {
+            "all_tweet_count": 2,
+            "followers": 1,
+            "following": 1,
+            "id": 1,
+            "name": "Ryan",
+            "retweet_count": 1,
+            "slug": "rg",
+            "token": "12345",
+            "tweet_count": 1,
+            "username": "RG",
+          }
+    }
+    displayMessage={[Function]}
+    loggedIn={true}
+    match={
+        Object {
+            "params": Object {
+              "search_field": "sports",
+            },
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <PageLoading />,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {},
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <PageLoading />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

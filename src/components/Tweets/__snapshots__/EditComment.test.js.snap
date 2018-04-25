@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class EditComment extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editBody: this.props.body,
+      editable: false };
+
+
+    this.toggleForm = this.toggleForm.bind(this);
+    this.updateComment = this.updateComment.bind(this);
+    this.editComment = this.editComment.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
+    this.validForm = this.validForm.bind(this);
+  }
+
+  toggleForm() {
+    this.setState({
+      editBody: this.props.body,
+      editable: !this.state.editable });
+
+  }
+
+  updateComment(e) {
+    this.setState({ editBody: e.target.value });
+  }
+
+  validForm() {
+    return this.state.editBody.length > 0;
+  }
+
+  editComment() {
+    this.setState({ editable: false });
+    this.props.editCommentBody(this.state.editBody);
+  }
+
+  deleteComment() {
+    if (window.confirm('Are you sure?')) {
+      this.props.deleteComment();
+    }
+  }
+
+  render() {
+    let component;
+
+    if (this.state.editable) {
+      component =
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 50 }, __self: this },
+        _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 51 }, __self: this },
+          _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', id: 'form_body', maxLength: '140', onChange: this.updateComment, value: this.state.editBody, placeholder: 'Edit your comment', __source: { fileName: _jsxFileName, lineNumber: 52 }, __self: this })),
+
+        _react2.default.createElement('div', { id: 'edit_tweet_buttons', __source: { fileName: _jsxFileName, lineNumber: 54 }, __self: this },
+          _react2.default.createElement(_reactBootstrap.Button, { id: 'submitForm', onClick: this.editComment, disabled: !this.validForm(), __source: { fileName: _jsxFileName, lineNumber: 55 }, __self: this }, 'Submit'),
+          _react2.default.createElement(_reactBootstrap.Button, { className: 'formToggle', onClick: this.toggleForm, __source: { fileName: _jsxFileName, lineNumber: 56 }, __self: this }, 'Cancel'),
+          _react2.default.createElement(_reactBootstrap.Button, { id: 'deleteTweet', onClick: this.deleteComment, __source: { fileName: _jsxFileName, lineNumber: 57 }, __self: this }, 'Delete')));
+
+
+
+    } else {
+      component =
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 63 }, __self: this },
+        _react2.default.createElement(_reactBootstrap.Button, { className: 'formToggle', onClick: this.toggleForm, __source: { fileName: _jsxFileName, lineNumber: 64 }, __self: this }, 'Edit'));
+
+
+    }
+
+    return component;
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <EditComment
+    body="Hello World"
+    currentUser={
+        Object {
+            "all_tweet_count": 2,
+            "followers": 1,
+            "following": 1,
+            "id": 1,
+            "name": "Ryan",
+            "retweet_count": 1,
+            "slug": "rg",
+            "token": "12345",
+            "tweet_count": 1,
+            "username": "RG",
+          }
+    }
+    deleteComment={[Function]}
+    displayMessage={[Function]}
+    editCommentBody={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <Button
+        active={false}
+        block={false}
+        bsClass="btn"
+        bsStyle="default"
+        className="formToggle"
+        disabled={false}
+        onClick={[Function]}
+>
+        Edit
+</Button>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "active": false,
+        "block": false,
+        "bsClass": "btn",
+        "bsStyle": "default",
+        "children": "Edit",
+        "className": "formToggle",
+        "disabled": false,
+        "onClick": [Function],
+      },
+      "ref": null,
+      "rendered": "Edit",
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <Button
+          active={false}
+          block={false}
+          bsClass="btn"
+          bsStyle="default"
+          className="formToggle"
+          disabled={false}
+          onClick={[Function]}
+>
+          Edit
+</Button>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "active": false,
+          "block": false,
+          "bsClass": "btn",
+          "bsStyle": "default",
+          "children": "Edit",
+          "className": "formToggle",
+          "disabled": false,
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "Edit",
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

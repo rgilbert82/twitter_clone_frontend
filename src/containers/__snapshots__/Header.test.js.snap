@@ -1,0 +1,628 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class Header extends _react2.default.Component {
+  render() {
+    let session;
+
+    if (this.props.loggedIn) {
+      session =
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 13 }, __self: this },
+        _react2.default.createElement(_CurrentUser.UserHeaderInfo, { currentUser: this.props.currentUser, appLogout: this.props.appLogout, displayMessage: this.props.displayMessage, __source: { fileName: _jsxFileName, lineNumber: 14 }, __self: this }));
+
+
+    } else {
+      session =
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 19 }, __self: this },
+        _react2.default.createElement(_reactBootstrap.Nav, { pullLeft: true, __source: { fileName: _jsxFileName, lineNumber: 20 }, __self: this },
+          _react2.default.createElement(_reactBootstrap.NavDropdown, { eventKey: 1, title: 'Options', id: 'basic-nav-dropdown', __source: { fileName: _jsxFileName, lineNumber: 21 }, __self: this },
+            _react2.default.createElement(_reactBootstrap.MenuItem, { __source: { fileName: _jsxFileName, lineNumber: 22 }, __self: this }, _react2.default.createElement(_reactRouterDom.Link, { to: '/register', __source: { fileName: _jsxFileName, lineNumber: 22 }, __self: this }, 'Sign up for an account')))),
+
+
+        _react2.default.createElement(_reactBootstrap.Nav, { pullRight: true, className: 'header_session_options', __source: { fileName: _jsxFileName, lineNumber: 25 }, __self: this },
+          _react2.default.createElement(_Sessions.LoginForm, { appLogin: this.props.appLogin, displayMessage: this.props.displayMessage, __source: { fileName: _jsxFileName, lineNumber: 26 }, __self: this })));
+
+
+
+    }
+
+    return (
+      _react2.default.createElement(_reactBootstrap.Navbar, { __source: { fileName: _jsxFileName, lineNumber: 33 }, __self: this },
+        _react2.default.createElement(_reactBootstrap.Navbar.Header, { __source: { fileName: _jsxFileName, lineNumber: 34 }, __self: this },
+          _react2.default.createElement(_reactBootstrap.Navbar.Brand, { __source: { fileName: _jsxFileName, lineNumber: 35 }, __self: this }, _react2.default.createElement(_reactRouterDom.Link, { to: '/', __source: { fileName: _jsxFileName, lineNumber: 35 }, __self: this }, 'Tweeter!'))),
+
+        session));
+
+
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Header />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "bsStyle": "default",
+      "children": Array [
+        <NavbarHeader>
+          <NavbarBrand>
+                    <Link
+                              replace={false}
+                              to="/"
+                    >
+                              Tweeter!
+                    </Link>
+          </NavbarBrand>
+</NavbarHeader>,
+        <div>
+          <Nav
+                    bsClass="nav"
+                    justified={false}
+                    pullLeft={true}
+                    pullRight={false}
+                    stacked={false}
+          >
+                    <NavDropdown
+                              eventKey={1}
+                              id="basic-nav-dropdown"
+                              title="Options"
+                    >
+                              <MenuItem
+                                        bsClass="dropdown"
+                                        disabled={false}
+                                        divider={false}
+                                        header={false}
+                              >
+                                        <Link
+                                                  replace={false}
+                                                  to="/register"
+                                        >
+                                                  Sign up for an account
+                                        </Link>
+                              </MenuItem>
+                    </NavDropdown>
+          </Nav>
+          <Nav
+                    bsClass="nav"
+                    className="header_session_options"
+                    justified={false}
+                    pullLeft={false}
+                    pullRight={true}
+                    stacked={false}
+          >
+                    <LoginForm
+                              appLogin={undefined}
+                              displayMessage={undefined}
+                    />
+          </Nav>
+</div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <NavbarBrand>
+            <Link
+                        replace={false}
+                        to="/"
+            >
+                        Tweeter!
+            </Link>
+</NavbarBrand>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Link
+              replace={false}
+              to="/"
+>
+              Tweeter!
+</Link>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Tweeter!",
+              "replace": false,
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": "Tweeter!",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Nav
+              bsClass="nav"
+              justified={false}
+              pullLeft={true}
+              pullRight={false}
+              stacked={false}
+>
+              <NavDropdown
+                            eventKey={1}
+                            id="basic-nav-dropdown"
+                            title="Options"
+              >
+                            <MenuItem
+                                          bsClass="dropdown"
+                                          disabled={false}
+                                          divider={false}
+                                          header={false}
+                            >
+                                          <Link
+                                                        replace={false}
+                                                        to="/register"
+                                          >
+                                                        Sign up for an account
+                                          </Link>
+                            </MenuItem>
+              </NavDropdown>
+</Nav>,
+            <Nav
+              bsClass="nav"
+              className="header_session_options"
+              justified={false}
+              pullLeft={false}
+              pullRight={true}
+              stacked={false}
+>
+              <LoginForm
+                            appLogin={undefined}
+                            displayMessage={undefined}
+              />
+</Nav>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "nav",
+              "children": <NavDropdown
+                eventKey={1}
+                id="basic-nav-dropdown"
+                title="Options"
+>
+                <MenuItem
+                                bsClass="dropdown"
+                                disabled={false}
+                                divider={false}
+                                header={false}
+                >
+                                <Link
+                                                replace={false}
+                                                to="/register"
+                                >
+                                                Sign up for an account
+                                </Link>
+                </MenuItem>
+</NavDropdown>,
+              "justified": false,
+              "pullLeft": true,
+              "pullRight": false,
+              "stacked": false,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <MenuItem
+                  bsClass="dropdown"
+                  disabled={false}
+                  divider={false}
+                  header={false}
+>
+                  <Link
+                                    replace={false}
+                                    to="/register"
+                  >
+                                    Sign up for an account
+                  </Link>
+</MenuItem>,
+                "eventKey": 1,
+                "id": "basic-nav-dropdown",
+                "title": "Options",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "bsClass": "dropdown",
+                  "children": <Link
+                    replace={false}
+                    to="/register"
+>
+                    Sign up for an account
+</Link>,
+                  "disabled": false,
+                  "divider": false,
+                  "header": false,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Sign up for an account",
+                    "replace": false,
+                    "to": "/register",
+                  },
+                  "ref": null,
+                  "rendered": "Sign up for an account",
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "nav",
+              "children": <LoginForm
+                appLogin={undefined}
+                displayMessage={undefined}
+/>,
+              "className": "header_session_options",
+              "justified": false,
+              "pullLeft": false,
+              "pullRight": true,
+              "stacked": false,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "appLogin": undefined,
+                "displayMessage": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "bsStyle": "default",
+        "children": Array [
+          <NavbarHeader>
+            <NavbarBrand>
+                        <Link
+                                    replace={false}
+                                    to="/"
+                        >
+                                    Tweeter!
+                        </Link>
+            </NavbarBrand>
+</NavbarHeader>,
+          <div>
+            <Nav
+                        bsClass="nav"
+                        justified={false}
+                        pullLeft={true}
+                        pullRight={false}
+                        stacked={false}
+            >
+                        <NavDropdown
+                                    eventKey={1}
+                                    id="basic-nav-dropdown"
+                                    title="Options"
+                        >
+                                    <MenuItem
+                                                bsClass="dropdown"
+                                                disabled={false}
+                                                divider={false}
+                                                header={false}
+                                    >
+                                                <Link
+                                                            replace={false}
+                                                            to="/register"
+                                                >
+                                                            Sign up for an account
+                                                </Link>
+                                    </MenuItem>
+                        </NavDropdown>
+            </Nav>
+            <Nav
+                        bsClass="nav"
+                        className="header_session_options"
+                        justified={false}
+                        pullLeft={false}
+                        pullRight={true}
+                        stacked={false}
+            >
+                        <LoginForm
+                                    appLogin={undefined}
+                                    displayMessage={undefined}
+                        />
+            </Nav>
+</div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <NavbarBrand>
+              <Link
+                            replace={false}
+                            to="/"
+              >
+                            Tweeter!
+              </Link>
+</NavbarBrand>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Link
+                replace={false}
+                to="/"
+>
+                Tweeter!
+</Link>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Tweeter!",
+                "replace": false,
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": "Tweeter!",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Nav
+                bsClass="nav"
+                justified={false}
+                pullLeft={true}
+                pullRight={false}
+                stacked={false}
+>
+                <NavDropdown
+                                eventKey={1}
+                                id="basic-nav-dropdown"
+                                title="Options"
+                >
+                                <MenuItem
+                                                bsClass="dropdown"
+                                                disabled={false}
+                                                divider={false}
+                                                header={false}
+                                >
+                                                <Link
+                                                                replace={false}
+                                                                to="/register"
+                                                >
+                                                                Sign up for an account
+                                                </Link>
+                                </MenuItem>
+                </NavDropdown>
+</Nav>,
+              <Nav
+                bsClass="nav"
+                className="header_session_options"
+                justified={false}
+                pullLeft={false}
+                pullRight={true}
+                stacked={false}
+>
+                <LoginForm
+                                appLogin={undefined}
+                                displayMessage={undefined}
+                />
+</Nav>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "nav",
+                "children": <NavDropdown
+                  eventKey={1}
+                  id="basic-nav-dropdown"
+                  title="Options"
+>
+                  <MenuItem
+                                    bsClass="dropdown"
+                                    disabled={false}
+                                    divider={false}
+                                    header={false}
+                  >
+                                    <Link
+                                                      replace={false}
+                                                      to="/register"
+                                    >
+                                                      Sign up for an account
+                                    </Link>
+                  </MenuItem>
+</NavDropdown>,
+                "justified": false,
+                "pullLeft": true,
+                "pullRight": false,
+                "stacked": false,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+>
+                    <Link
+                                        replace={false}
+                                        to="/register"
+                    >
+                                        Sign up for an account
+                    </Link>
+</MenuItem>,
+                  "eventKey": 1,
+                  "id": "basic-nav-dropdown",
+                  "title": "Options",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "bsClass": "dropdown",
+                    "children": <Link
+                      replace={false}
+                      to="/register"
+>
+                      Sign up for an account
+</Link>,
+                    "disabled": false,
+                    "divider": false,
+                    "header": false,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Sign up for an account",
+                      "replace": false,
+                      "to": "/register",
+                    },
+                    "ref": null,
+                    "rendered": "Sign up for an account",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "nav",
+                "children": <LoginForm
+                  appLogin={undefined}
+                  displayMessage={undefined}
+/>,
+                "className": "header_session_options",
+                "justified": false,
+                "pullLeft": false,
+                "pullRight": true,
+                "stacked": false,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "appLogin": undefined,
+                  "displayMessage": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

@@ -1,0 +1,583 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class App extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: {},
+      loggedIn: undefined,
+      hasMessage: false,
+      currentUserChange: false,
+      message: 'Oops! Something went wrong!' };
+
+
+    this.appLogin = this.appLogin.bind(this);
+    this.appLogout = this.appLogout.bind(this);
+    this.fetchCurrentUser = this.fetchCurrentUser.bind(this);
+    this.createUser = this.createUser.bind(this);
+    this.editUser = this.editUser.bind(this);
+    this.deleteAccount = this.deleteAccount.bind(this);
+    this.displayMessage = this.displayMessage.bind(this);
+    this.closeMessage = this.closeMessage.bind(this);
+    this.navigateToSearch = this.navigateToSearch.bind(this);
+    this.redirectToSearch = this.redirectToSearch.bind(this);
+    this.lowerTweetCount = this.lowerTweetCount.bind(this);
+    this.raiseTweetCount = this.raiseTweetCount.bind(this);
+    this.raiseSidebarFollowingCount = this.raiseSidebarFollowingCount.bind(this);
+    this.lowerSidebarFollowingCount = this.lowerSidebarFollowingCount.bind(this);
+  }
+
+  componentWillMount() {
+    this.fetchCurrentUser();
+  }
+
+  fetchCurrentUser() {
+    const token = (0, _sessions2.getToken)();
+
+    if (token) {
+      return (0, _sessions.getCurrentUserAPI)().
+      then(data => {
+        data.all_tweet_count = Number(data.tweet_count) + Number(data.retweet_count);
+        this.setState({ currentUser: data, loggedIn: true });
+      }).catch(() => {
+        this.appLogout();
+      });
+    } else {
+      this.setState({ loggedIn: false });
+    }
+  }
+
+  createUser(userData) {
+    return (0, _users.createUserAPI)(userData).
+    then(data => {
+      data.following = "0";
+      data.followers = "0";
+      data.tweet_count = "0";
+      data.retweet_count = "0";
+      data.all_tweet_count = "0";
+      (0, _sessions2.setToken)(data.token);
+      this.setState({ currentUser: data, loggedIn: true });
+    }).catch(() => {
+      this.displayMessage('There was an error creating the user');
+    });
+  }
+
+  editUser(userData) {
+    return (0, _users.updateUserAPI)(userData).
+    then(data => {
+      data.following = this.state.currentUser.following;
+      data.followers = this.state.currentUser.followers;
+      data.tweet_count = this.state.currentUser.tweet_count;
+      data.retweet_count = this.state.currentUser.retweet_count;
+      data.all_tweet_count = this.state.currentUser.all_tweet_count;
+      this.setState({ currentUser: data });
+      this.displayMessage('You successfully updated your account!');
+    }).catch(() => {
+      this.displayMessage('There was an error updating the user');
+    });
+  }
+
+  deleteAccount(userId) {
+    return (0, _users.deleteUserAPI)(userId).
+    then(() => {
+      this.appLogout();
+    }).catch(() => {
+      this.displayMessage('There was an error deleting the account');
+    });
+  }
+
+  raiseTweetCount() {
+    let updatedUser = this.state.currentUser;
+
+    if (updatedUser.all_tweet_count) {
+      updatedUser.all_tweet_count = Number(updatedUser.all_tweet_count) + 1;
+    } else {
+      updatedUser.all_tweet_count = 1;
+    }
+
+    this.setState({ currentUser: updatedUser, currentUserChange: !this.state.currentUserChange });
+  }
+
+  lowerTweetCount() {
+    let updatedUser = this.state.currentUser;
+
+    if (updatedUser.all_tweet_count) {
+      updatedUser.all_tweet_count = Number(updatedUser.all_tweet_count) - 1;
+    }
+
+    this.setState({ currentUser: updatedUser });
+  }
+
+  raiseSidebarFollowingCount() {
+    let updatedUser = this.state.currentUser;
+
+    if (updatedUser.all_tweet_count) {
+      updatedUser.following = Number(updatedUser.following) + 1;
+    } else {
+      updatedUser.following = 1;
+    }
+
+    this.setState({ currentUser: updatedUser });
+  }
+
+  lowerSidebarFollowingCount() {
+    let updatedUser = this.state.currentUser;
+
+    if (updatedUser.all_tweet_count) {
+      updatedUser.following = Number(updatedUser.following) - 1;
+    }
+
+    this.setState({ currentUser: updatedUser });
+  }
+
+  appLogin(token) {
+    (0, _sessions2.setToken)(token);
+    this.fetchCurrentUser();
+  }
+
+  appLogout() {
+    (0, _sessions2.deleteToken)();
+    this.setState({ loggedIn: false });
+  }
+
+  displayMessage(message) {
+    this.setState({ message: message, hasMessage: true });
+  }
+
+  closeMessage() {
+    this.setState({ hasMessage: false });
+  }
+
+  navigateToSearch(e) {
+    let searchField;
+
+    if (e.target.tagName.toLowerCase() === "a") {
+      e.preventDefault();
+      searchField = e.target.innerText.replace(/^#/, '');
+      this.redirectToSearch(searchField);
+    }
+  }
+
+  redirectToSearch(searchField) {
+    const searchPath = \`/search/\${searchField}\`;
+    this.props.history.push(searchPath);
+  }
+
+  render() {
+    let messageWindow = _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 174 }, __self: this });
+
+    if (this.state.hasMessage) {
+      messageWindow = _react2.default.createElement(_Misc.MessageWindow, { message: this.state.message, closeMessage: this.closeMessage, __source: { fileName: _jsxFileName, lineNumber: 177 }, __self: this });
+    }
+
+    return (
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 181 }, __self: this },
+        _react2.default.createElement(_.Header, { currentUser: this.state.currentUser, loggedIn: this.state.loggedIn, appLogin: this.appLogin, appLogout: this.appLogout, displayMessage: this.displayMessage, __source: { fileName: _jsxFileName, lineNumber: 182 }, __self: this }),
+        messageWindow,
+        _react2.default.createElement(_Search.SearchBar, { redirectToSearch: this.redirectToSearch, __source: { fileName: _jsxFileName, lineNumber: 184 }, __self: this }),
+        _react2.default.createElement(_reactBootstrap.Grid, { id: 'main_grid', __source: { fileName: _jsxFileName, lineNumber: 185 }, __self: this },
+          _react2.default.createElement(_.Sidebar, { loggedIn: this.state.loggedIn, currentUser: this.state.currentUser, raiseSidebarTweetCount: this.raiseTweetCount, __source: { fileName: _jsxFileName, lineNumber: 186 }, __self: this }),
+          _react2.default.createElement(_.Main, { loggedIn: this.state.loggedIn, currentUser: this.state.currentUser,
+            currentUserChange: this.state.currentUserChange, createUser: this.createUser,
+            editUser: this.editUser, deleteAccount: this.deleteAccount,
+            displayMessage: this.displayMessage, navigateToSearch: this.navigateToSearch,
+            lowerTweetCount: this.lowerTweetCount, raiseTweetCount: this.raiseTweetCount,
+            raiseSidebarFollowingCount: this.raiseSidebarFollowingCount,
+            lowerSidebarFollowingCount: this.lowerSidebarFollowingCount, __source: { fileName: _jsxFileName, lineNumber: 187 }, __self: this }),
+          _react2.default.createElement(_reactBootstrap.Col, { className: 'empty_sidebar', xs: 4, md: 3, __source: { fileName: _jsxFileName, lineNumber: 194 }, __self: this }))));
+
+
+
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <App />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Header
+          appLogin={[Function]}
+          appLogout={[Function]}
+          currentUser={Object {}}
+          displayMessage={[Function]}
+          loggedIn={false}
+/>,
+        <div />,
+        <SearchBar
+          redirectToSearch={[Function]}
+/>,
+        <Grid
+          bsClass="container"
+          componentClass="div"
+          fluid={false}
+          id="main_grid"
+>
+          <Sidebar
+                    currentUser={Object {}}
+                    loggedIn={false}
+                    raiseSidebarTweetCount={[Function]}
+          />
+          <Main
+                    createUser={[Function]}
+                    currentUser={Object {}}
+                    currentUserChange={false}
+                    deleteAccount={[Function]}
+                    displayMessage={[Function]}
+                    editUser={[Function]}
+                    loggedIn={false}
+                    lowerSidebarFollowingCount={[Function]}
+                    lowerTweetCount={[Function]}
+                    navigateToSearch={[Function]}
+                    raiseSidebarFollowingCount={[Function]}
+                    raiseTweetCount={[Function]}
+          />
+          <Col
+                    bsClass="col"
+                    className="empty_sidebar"
+                    componentClass="div"
+                    md={3}
+                    xs={4}
+          />
+</Grid>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "appLogin": [Function],
+          "appLogout": [Function],
+          "currentUser": Object {},
+          "displayMessage": [Function],
+          "loggedIn": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "redirectToSearch": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "bsClass": "container",
+          "children": Array [
+            <Sidebar
+              currentUser={Object {}}
+              loggedIn={false}
+              raiseSidebarTweetCount={[Function]}
+/>,
+            <Main
+              createUser={[Function]}
+              currentUser={Object {}}
+              currentUserChange={false}
+              deleteAccount={[Function]}
+              displayMessage={[Function]}
+              editUser={[Function]}
+              loggedIn={false}
+              lowerSidebarFollowingCount={[Function]}
+              lowerTweetCount={[Function]}
+              navigateToSearch={[Function]}
+              raiseSidebarFollowingCount={[Function]}
+              raiseTweetCount={[Function]}
+/>,
+            <Col
+              bsClass="col"
+              className="empty_sidebar"
+              componentClass="div"
+              md={3}
+              xs={4}
+/>,
+          ],
+          "componentClass": "div",
+          "fluid": false,
+          "id": "main_grid",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "currentUser": Object {},
+              "loggedIn": false,
+              "raiseSidebarTweetCount": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "createUser": [Function],
+              "currentUser": Object {},
+              "currentUserChange": false,
+              "deleteAccount": [Function],
+              "displayMessage": [Function],
+              "editUser": [Function],
+              "loggedIn": false,
+              "lowerSidebarFollowingCount": [Function],
+              "lowerTweetCount": [Function],
+              "navigateToSearch": [Function],
+              "raiseSidebarFollowingCount": [Function],
+              "raiseTweetCount": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "col",
+              "className": "empty_sidebar",
+              "componentClass": "div",
+              "md": 3,
+              "xs": 4,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Header
+            appLogin={[Function]}
+            appLogout={[Function]}
+            currentUser={Object {}}
+            displayMessage={[Function]}
+            loggedIn={false}
+/>,
+          <div />,
+          <SearchBar
+            redirectToSearch={[Function]}
+/>,
+          <Grid
+            bsClass="container"
+            componentClass="div"
+            fluid={false}
+            id="main_grid"
+>
+            <Sidebar
+                        currentUser={Object {}}
+                        loggedIn={false}
+                        raiseSidebarTweetCount={[Function]}
+            />
+            <Main
+                        createUser={[Function]}
+                        currentUser={Object {}}
+                        currentUserChange={false}
+                        deleteAccount={[Function]}
+                        displayMessage={[Function]}
+                        editUser={[Function]}
+                        loggedIn={false}
+                        lowerSidebarFollowingCount={[Function]}
+                        lowerTweetCount={[Function]}
+                        navigateToSearch={[Function]}
+                        raiseSidebarFollowingCount={[Function]}
+                        raiseTweetCount={[Function]}
+            />
+            <Col
+                        bsClass="col"
+                        className="empty_sidebar"
+                        componentClass="div"
+                        md={3}
+                        xs={4}
+            />
+</Grid>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "appLogin": [Function],
+            "appLogout": [Function],
+            "currentUser": Object {},
+            "displayMessage": [Function],
+            "loggedIn": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "redirectToSearch": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "bsClass": "container",
+            "children": Array [
+              <Sidebar
+                currentUser={Object {}}
+                loggedIn={false}
+                raiseSidebarTweetCount={[Function]}
+/>,
+              <Main
+                createUser={[Function]}
+                currentUser={Object {}}
+                currentUserChange={false}
+                deleteAccount={[Function]}
+                displayMessage={[Function]}
+                editUser={[Function]}
+                loggedIn={false}
+                lowerSidebarFollowingCount={[Function]}
+                lowerTweetCount={[Function]}
+                navigateToSearch={[Function]}
+                raiseSidebarFollowingCount={[Function]}
+                raiseTweetCount={[Function]}
+/>,
+              <Col
+                bsClass="col"
+                className="empty_sidebar"
+                componentClass="div"
+                md={3}
+                xs={4}
+/>,
+            ],
+            "componentClass": "div",
+            "fluid": false,
+            "id": "main_grid",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "currentUser": Object {},
+                "loggedIn": false,
+                "raiseSidebarTweetCount": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "createUser": [Function],
+                "currentUser": Object {},
+                "currentUserChange": false,
+                "deleteAccount": [Function],
+                "displayMessage": [Function],
+                "editUser": [Function],
+                "loggedIn": false,
+                "lowerSidebarFollowingCount": [Function],
+                "lowerTweetCount": [Function],
+                "navigateToSearch": [Function],
+                "raiseSidebarFollowingCount": [Function],
+                "raiseTweetCount": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "col",
+                "className": "empty_sidebar",
+                "componentClass": "div",
+                "md": 3,
+                "xs": 4,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

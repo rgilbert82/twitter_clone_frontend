@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class EnterSearch extends _react2.default.Component {
+  render() {
+    return (
+      _react2.default.createElement("div", { id: "section_message", __source: { fileName: _jsxFileName, lineNumber: 6 }, __self: this },
+        _react2.default.createElement("h2", { __source: { fileName: _jsxFileName, lineNumber: 7 }, __self: this }, "Enter a hashtag to search!")));
+
+
+  }} renders properly 1`] = `<EnterSearch />`;

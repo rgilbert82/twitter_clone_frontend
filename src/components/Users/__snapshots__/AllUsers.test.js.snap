@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class AllUsers extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+      usersFeed: [] };
+
+
+    this.fetchUsers = this.fetchUsers.bind(this);
+    this.scrollListener = this.scrollListener.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+
+    if (this._isMounted) {
+      this.fetchUsers();
+      window.addEventListener('scroll', this.scrollListener);
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollListener);
+    this._isMounted = false;
+  }
+
+  scrollListener() {
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2) {
+      if (this.state.usersFeed.length < this.state.users.length) {
+        this.setState({ usersFeed: this.state.users.slice(0, this.state.usersFeed.length + 15) });
+      }
+    }
+  }
+
+  fetchUsers() {
+    return (0, _users.getUsersAPI)().
+    then(data => {
+      this.setState({ users: data, usersFeed: data.slice(0, 15) });
+    }).catch(() => {
+      this.props.displayMessage('Oops! Something went wrong loading this page!');
+    });
+  }
+
+  render() {
+    let users = this.state.usersFeed.map(user => {
+      return (
+        _react2.default.createElement('li', { className: 'list_item', key: user.id, __source: { fileName: _jsxFileName, lineNumber: 51 }, __self: this },
+          _react2.default.createElement(_.UserListItem, { user: user, __source: { fileName: _jsxFileName, lineNumber: 52 }, __self: this })));
+
+
+    });
+
+    return (
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 58 }, __self: this },
+        _react2.default.createElement('h1', { className: 'section_header', __source: { fileName: _jsxFileName, lineNumber: 59 }, __self: this }, 'Popular Users'),
+        _react2.default.createElement('ul', { __source: { fileName: _jsxFileName, lineNumber: 60 }, __self: this },
+          users)));
+
+
+
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AllUsers />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1
+          className="section_header"
+>
+          Popular Users
+</h1>,
+        <ul>
+          
+</ul>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Popular Users",
+          "className": "section_header",
+        },
+        "ref": null,
+        "rendered": "Popular Users",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [],
+        },
+        "ref": null,
+        "rendered": Array [],
+        "type": "ul",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1
+            className="section_header"
+>
+            Popular Users
+</h1>,
+          <ul>
+            
+</ul>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Popular Users",
+            "className": "section_header",
+          },
+          "ref": null,
+          "rendered": "Popular Users",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [],
+          },
+          "ref": null,
+          "rendered": Array [],
+          "type": "ul",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

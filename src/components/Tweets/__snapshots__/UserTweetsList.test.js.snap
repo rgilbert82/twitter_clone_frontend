@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class UserTweetsList extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tweets: [],
+      tweetsFeed: [],
+      tweetsLoaded: false };
+
+    this.fetchTweets = this.fetchTweets.bind(this);
+    this.deleteTweet = this.deleteTweet.bind(this);
+    this.deleteRetweet = this.deleteRetweet.bind(this);
+    this.scrollListener = this.scrollListener.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+
+    if (this._isMounted) {
+      this.fetchTweets();
+      window.addEventListener('scroll', this.scrollListener);
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollListener);
+    this._isMounted = false;
+  }
+
+  componentDidUpdate() {
+    const elements = document.getElementsByClassName('tweet_body_text');
+
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].innerHTML = (0, _misc.hashtagify)(elements[i].innerHTML);
+    }
+  }
+
+  scrollListener() {
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2) {
+      if (this.state.tweetsFeed.length < this.state.tweets.length) {
+        this.setState({ tweetsFeed: this.state.tweets.slice(0, this.state.tweetsFeed.length + 8) });
+      }
+    }
+  }
+
+  fetchTweets() {
+    return (0, _users.getUserTweetsAPI)(this.props.user_id).
+    then(data => {
+      if (this._isMounted) {
+        this.setState({ tweets: data, tweetsFeed: data.slice(0, 8), tweetsLoaded: true });
+      }
+    }).catch(() => {
+      if (this._isMounted) {
+        this.props.displayMessage('There was an error loading the tweets');
+      }
+    });
+  }
+
+  deleteTweet(tweetID) {
+    return (0, _tweets.deleteTweetAPI)(tweetID).
+    then(() => {
+      this.setState({
+        tweets: this.state.tweets.filter(tweet => {return tweet.id !== tweetID;}),
+        tweetsFeed: this.state.tweetsFeed.filter(tweet => {return tweet.id !== tweetID;}) });
+
+      this.props.lowerTweetCount();
+    }).catch(() => {
+      this.props.displayMessage('There was an error deleting the tweet');
+    });
+  }
+
+  deleteRetweet(retweetID) {
+    return (0, _retweets.deleteRetweetAPI)(retweetID).
+    then(() => {
+      this.setState({
+        tweets: this.state.tweets.filter(tweet => {return tweet.retweet_id !== retweetID;}),
+        tweetsFeed: this.state.tweetsFeed.filter(tweet => {return tweet.retweet_id !== retweetID;}) });
+
+      this.props.lowerTweetCount();
+    }).catch(() => {
+      this.props.displayMessage('There was an error deleting the retweet');
+    });
+  }
+
+  render() {
+    let allTweets;
+
+    if (this.state.tweetsLoaded) {
+      allTweets = this.state.tweetsFeed.map(tweet => {
+        let keyID;
+
+        if (tweet.retweet) {
+          keyID = (0, _misc.randomString)(5);
+        } else {
+          keyID = tweet.id;
+        }
+
+        return (
+          _react2.default.createElement('li', { className: 'list_item', key: keyID, __source: { fileName: _jsxFileName, lineNumber: 106 }, __self: this },
+            _react2.default.createElement(_.TweetListItem, { history: this.props.history, tweet: tweet, loggedIn: this.props.loggedIn, isCurrentUserPage: this.props.isCurrentUserPage, displayMessage: this.props.displayMessage, deleteTweet: this.deleteTweet, deleteRetweet: this.deleteRetweet, navigateToSearch: this.props.navigateToSearch, __source: { fileName: _jsxFileName, lineNumber: 107 }, __self: this })));
+
+
+      });
+
+      return (
+        _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 113 }, __self: this },
+          _react2.default.createElement('h2', { className: 'sub_header', __source: { fileName: _jsxFileName, lineNumber: 114 }, __self: this }, 'Tweets'),
+          _react2.default.createElement('ul', { __source: { fileName: _jsxFileName, lineNumber: 115 }, __self: this },
+            allTweets)));
+
+
+
+    } else {
+      return _react2.default.createElement(_Misc.PageLoading, { __source: { fileName: _jsxFileName, lineNumber: 121 }, __self: this });
+    }
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <UserTweetsList
+    user_id={5}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {},
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {},
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

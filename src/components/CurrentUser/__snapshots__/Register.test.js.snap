@@ -1,0 +1,839 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class Register extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      username: '',
+      password: '' };
+
+
+    this.updateName = this.updateName.bind(this);
+    this.updateUsername = this.updateUsername.bind(this);
+    this.updatePassword = this.updatePassword.bind(this);
+    this.isValidForm = this.isValidForm.bind(this);
+    this.createNewUser = this.createNewUser.bind(this);
+  }
+
+  updateName(e) {
+    this.setState({ name: e.target.value });
+  }
+
+  updateUsername(e) {
+    this.setState({ username: e.target.value });
+  }
+
+  updatePassword(e) {
+    this.setState({ password: e.target.value });
+  }
+
+  isValidForm() {
+    return this.state.name.length >= 3 && this.state.username.length >= 3 && this.state.password.length >= 8;
+  }
+
+  createNewUser() {
+    this.props.createUser(this.state);
+  }
+
+  render() {
+    if (this.props.loggedIn) {
+      return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/', __source: { fileName: _jsxFileName, lineNumber: 43 }, __self: this });
+    } else {
+      return (
+        _react2.default.createElement('div', { className: 'page_form', id: 'register_form', __source: { fileName: _jsxFileName, lineNumber: 46 }, __self: this },
+          _react2.default.createElement('h1', { __source: { fileName: _jsxFileName, lineNumber: 47 }, __self: this }, 'Register'),
+          _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 48 }, __self: this },
+            _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 49 }, __self: this },
+              _react2.default.createElement(_reactBootstrap.ControlLabel, { htmlFor: 'userNameForm', __source: { fileName: _jsxFileName, lineNumber: 50 }, __self: this }, 'Name'),
+              _react2.default.createElement(_reactBootstrap.FormControl, { id: 'userNameForm', type: 'text', value: this.state.name, onChange: this.updateName, __source: { fileName: _jsxFileName, lineNumber: 51 }, __self: this })),
+
+            _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 53 }, __self: this },
+              _react2.default.createElement(_reactBootstrap.ControlLabel, { htmlFor: 'userUsernameForm', __source: { fileName: _jsxFileName, lineNumber: 54 }, __self: this }, 'Username'),
+              _react2.default.createElement(_reactBootstrap.FormControl, { id: 'userUsernameForm', type: 'text', value: this.state.username, onChange: this.updateUsername, __source: { fileName: _jsxFileName, lineNumber: 55 }, __self: this })),
+
+            _react2.default.createElement(_reactBootstrap.FormGroup, { __source: { fileName: _jsxFileName, lineNumber: 57 }, __self: this },
+              _react2.default.createElement(_reactBootstrap.ControlLabel, { htmlFor: 'userPasswordForm', __source: { fileName: _jsxFileName, lineNumber: 58 }, __self: this }, 'Password'),
+              _react2.default.createElement(_reactBootstrap.FormControl, { id: 'userPasswordForm', type: 'password', value: this.state.password, onChange: this.updatePassword, __source: { fileName: _jsxFileName, lineNumber: 59 }, __self: this })),
+
+            _react2.default.createElement(_reactBootstrap.Button, { id: 'submit_form', disabled: !this.isValidForm(), onClick: this.createNewUser, __source: { fileName: _jsxFileName, lineNumber: 61 }, __self: this }, 'Sign Up'))));
+
+
+
+    }
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Register
+    createUser={[Function]}
+    loggedIn={false}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1>
+          Register
+</h1>,
+        <div>
+          <FormGroup
+                    bsClass="form-group"
+          >
+                    <ControlLabel
+                              bsClass="control-label"
+                              htmlFor="userNameForm"
+                              srOnly={false}
+                    >
+                              Name
+                    </ControlLabel>
+                    <FormControl
+                              bsClass="form-control"
+                              componentClass="input"
+                              id="userNameForm"
+                              onChange={[Function]}
+                              type="text"
+                              value=""
+                    />
+          </FormGroup>
+          <FormGroup
+                    bsClass="form-group"
+          >
+                    <ControlLabel
+                              bsClass="control-label"
+                              htmlFor="userUsernameForm"
+                              srOnly={false}
+                    >
+                              Username
+                    </ControlLabel>
+                    <FormControl
+                              bsClass="form-control"
+                              componentClass="input"
+                              id="userUsernameForm"
+                              onChange={[Function]}
+                              type="text"
+                              value=""
+                    />
+          </FormGroup>
+          <FormGroup
+                    bsClass="form-group"
+          >
+                    <ControlLabel
+                              bsClass="control-label"
+                              htmlFor="userPasswordForm"
+                              srOnly={false}
+                    >
+                              Password
+                    </ControlLabel>
+                    <FormControl
+                              bsClass="form-control"
+                              componentClass="input"
+                              id="userPasswordForm"
+                              onChange={[Function]}
+                              type="password"
+                              value=""
+                    />
+          </FormGroup>
+          <Button
+                    active={false}
+                    block={false}
+                    bsClass="btn"
+                    bsStyle="default"
+                    disabled={true}
+                    id="submit_form"
+                    onClick={[Function]}
+          >
+                    Sign Up
+          </Button>
+</div>,
+      ],
+      "className": "page_form",
+      "id": "register_form",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Register",
+        },
+        "ref": null,
+        "rendered": "Register",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <FormGroup
+              bsClass="form-group"
+>
+              <ControlLabel
+                            bsClass="control-label"
+                            htmlFor="userNameForm"
+                            srOnly={false}
+              >
+                            Name
+              </ControlLabel>
+              <FormControl
+                            bsClass="form-control"
+                            componentClass="input"
+                            id="userNameForm"
+                            onChange={[Function]}
+                            type="text"
+                            value=""
+              />
+</FormGroup>,
+            <FormGroup
+              bsClass="form-group"
+>
+              <ControlLabel
+                            bsClass="control-label"
+                            htmlFor="userUsernameForm"
+                            srOnly={false}
+              >
+                            Username
+              </ControlLabel>
+              <FormControl
+                            bsClass="form-control"
+                            componentClass="input"
+                            id="userUsernameForm"
+                            onChange={[Function]}
+                            type="text"
+                            value=""
+              />
+</FormGroup>,
+            <FormGroup
+              bsClass="form-group"
+>
+              <ControlLabel
+                            bsClass="control-label"
+                            htmlFor="userPasswordForm"
+                            srOnly={false}
+              >
+                            Password
+              </ControlLabel>
+              <FormControl
+                            bsClass="form-control"
+                            componentClass="input"
+                            id="userPasswordForm"
+                            onChange={[Function]}
+                            type="password"
+                            value=""
+              />
+</FormGroup>,
+            <Button
+              active={false}
+              block={false}
+              bsClass="btn"
+              bsStyle="default"
+              disabled={true}
+              id="submit_form"
+              onClick={[Function]}
+>
+              Sign Up
+</Button>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "form-group",
+              "children": Array [
+                <ControlLabel
+                  bsClass="control-label"
+                  htmlFor="userNameForm"
+                  srOnly={false}
+>
+                  Name
+</ControlLabel>,
+                <FormControl
+                  bsClass="form-control"
+                  componentClass="input"
+                  id="userNameForm"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+/>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "bsClass": "control-label",
+                  "children": "Name",
+                  "htmlFor": "userNameForm",
+                  "srOnly": false,
+                },
+                "ref": null,
+                "rendered": "Name",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "bsClass": "form-control",
+                  "componentClass": "input",
+                  "id": "userNameForm",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "form-group",
+              "children": Array [
+                <ControlLabel
+                  bsClass="control-label"
+                  htmlFor="userUsernameForm"
+                  srOnly={false}
+>
+                  Username
+</ControlLabel>,
+                <FormControl
+                  bsClass="form-control"
+                  componentClass="input"
+                  id="userUsernameForm"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+/>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "bsClass": "control-label",
+                  "children": "Username",
+                  "htmlFor": "userUsernameForm",
+                  "srOnly": false,
+                },
+                "ref": null,
+                "rendered": "Username",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "bsClass": "form-control",
+                  "componentClass": "input",
+                  "id": "userUsernameForm",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "bsClass": "form-group",
+              "children": Array [
+                <ControlLabel
+                  bsClass="control-label"
+                  htmlFor="userPasswordForm"
+                  srOnly={false}
+>
+                  Password
+</ControlLabel>,
+                <FormControl
+                  bsClass="form-control"
+                  componentClass="input"
+                  id="userPasswordForm"
+                  onChange={[Function]}
+                  type="password"
+                  value=""
+/>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "bsClass": "control-label",
+                  "children": "Password",
+                  "htmlFor": "userPasswordForm",
+                  "srOnly": false,
+                },
+                "ref": null,
+                "rendered": "Password",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "bsClass": "form-control",
+                  "componentClass": "input",
+                  "id": "userPasswordForm",
+                  "onChange": [Function],
+                  "type": "password",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": false,
+              "block": false,
+              "bsClass": "btn",
+              "bsStyle": "default",
+              "children": "Sign Up",
+              "disabled": true,
+              "id": "submit_form",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Sign Up",
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            Register
+</h1>,
+          <div>
+            <FormGroup
+                        bsClass="form-group"
+            >
+                        <ControlLabel
+                                    bsClass="control-label"
+                                    htmlFor="userNameForm"
+                                    srOnly={false}
+                        >
+                                    Name
+                        </ControlLabel>
+                        <FormControl
+                                    bsClass="form-control"
+                                    componentClass="input"
+                                    id="userNameForm"
+                                    onChange={[Function]}
+                                    type="text"
+                                    value=""
+                        />
+            </FormGroup>
+            <FormGroup
+                        bsClass="form-group"
+            >
+                        <ControlLabel
+                                    bsClass="control-label"
+                                    htmlFor="userUsernameForm"
+                                    srOnly={false}
+                        >
+                                    Username
+                        </ControlLabel>
+                        <FormControl
+                                    bsClass="form-control"
+                                    componentClass="input"
+                                    id="userUsernameForm"
+                                    onChange={[Function]}
+                                    type="text"
+                                    value=""
+                        />
+            </FormGroup>
+            <FormGroup
+                        bsClass="form-group"
+            >
+                        <ControlLabel
+                                    bsClass="control-label"
+                                    htmlFor="userPasswordForm"
+                                    srOnly={false}
+                        >
+                                    Password
+                        </ControlLabel>
+                        <FormControl
+                                    bsClass="form-control"
+                                    componentClass="input"
+                                    id="userPasswordForm"
+                                    onChange={[Function]}
+                                    type="password"
+                                    value=""
+                        />
+            </FormGroup>
+            <Button
+                        active={false}
+                        block={false}
+                        bsClass="btn"
+                        bsStyle="default"
+                        disabled={true}
+                        id="submit_form"
+                        onClick={[Function]}
+            >
+                        Sign Up
+            </Button>
+</div>,
+        ],
+        "className": "page_form",
+        "id": "register_form",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Register",
+          },
+          "ref": null,
+          "rendered": "Register",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <FormGroup
+                bsClass="form-group"
+>
+                <ControlLabel
+                                bsClass="control-label"
+                                htmlFor="userNameForm"
+                                srOnly={false}
+                >
+                                Name
+                </ControlLabel>
+                <FormControl
+                                bsClass="form-control"
+                                componentClass="input"
+                                id="userNameForm"
+                                onChange={[Function]}
+                                type="text"
+                                value=""
+                />
+</FormGroup>,
+              <FormGroup
+                bsClass="form-group"
+>
+                <ControlLabel
+                                bsClass="control-label"
+                                htmlFor="userUsernameForm"
+                                srOnly={false}
+                >
+                                Username
+                </ControlLabel>
+                <FormControl
+                                bsClass="form-control"
+                                componentClass="input"
+                                id="userUsernameForm"
+                                onChange={[Function]}
+                                type="text"
+                                value=""
+                />
+</FormGroup>,
+              <FormGroup
+                bsClass="form-group"
+>
+                <ControlLabel
+                                bsClass="control-label"
+                                htmlFor="userPasswordForm"
+                                srOnly={false}
+                >
+                                Password
+                </ControlLabel>
+                <FormControl
+                                bsClass="form-control"
+                                componentClass="input"
+                                id="userPasswordForm"
+                                onChange={[Function]}
+                                type="password"
+                                value=""
+                />
+</FormGroup>,
+              <Button
+                active={false}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                disabled={true}
+                id="submit_form"
+                onClick={[Function]}
+>
+                Sign Up
+</Button>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "form-group",
+                "children": Array [
+                  <ControlLabel
+                    bsClass="control-label"
+                    htmlFor="userNameForm"
+                    srOnly={false}
+>
+                    Name
+</ControlLabel>,
+                  <FormControl
+                    bsClass="form-control"
+                    componentClass="input"
+                    id="userNameForm"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+/>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "bsClass": "control-label",
+                    "children": "Name",
+                    "htmlFor": "userNameForm",
+                    "srOnly": false,
+                  },
+                  "ref": null,
+                  "rendered": "Name",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "bsClass": "form-control",
+                    "componentClass": "input",
+                    "id": "userNameForm",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "form-group",
+                "children": Array [
+                  <ControlLabel
+                    bsClass="control-label"
+                    htmlFor="userUsernameForm"
+                    srOnly={false}
+>
+                    Username
+</ControlLabel>,
+                  <FormControl
+                    bsClass="form-control"
+                    componentClass="input"
+                    id="userUsernameForm"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+/>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "bsClass": "control-label",
+                    "children": "Username",
+                    "htmlFor": "userUsernameForm",
+                    "srOnly": false,
+                  },
+                  "ref": null,
+                  "rendered": "Username",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "bsClass": "form-control",
+                    "componentClass": "input",
+                    "id": "userUsernameForm",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "bsClass": "form-group",
+                "children": Array [
+                  <ControlLabel
+                    bsClass="control-label"
+                    htmlFor="userPasswordForm"
+                    srOnly={false}
+>
+                    Password
+</ControlLabel>,
+                  <FormControl
+                    bsClass="form-control"
+                    componentClass="input"
+                    id="userPasswordForm"
+                    onChange={[Function]}
+                    type="password"
+                    value=""
+/>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "bsClass": "control-label",
+                    "children": "Password",
+                    "htmlFor": "userPasswordForm",
+                    "srOnly": false,
+                  },
+                  "ref": null,
+                  "rendered": "Password",
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "bsClass": "form-control",
+                    "componentClass": "input",
+                    "id": "userPasswordForm",
+                    "onChange": [Function],
+                    "type": "password",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": false,
+                "block": false,
+                "bsClass": "btn",
+                "bsStyle": "default",
+                "children": "Sign Up",
+                "disabled": true,
+                "id": "submit_form",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Sign Up",
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

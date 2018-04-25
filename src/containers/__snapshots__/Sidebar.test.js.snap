@@ -1,0 +1,1036 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class Sidebar extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = { formToggle: false };
+    this.toggleTweetForm = this.toggleTweetForm.bind(this);
+  }
+
+  toggleTweetForm() {
+    this.setState({ formToggle: !this.state.formToggle });
+  }
+
+  render() {
+    const userPath = \`/users/\${this.props.currentUser.slug}\`;
+    let tweetForm;
+
+    if (this.state.formToggle) {
+      tweetForm = _react2.default.createElement(_Tweets.NewTweetForm, { toggleTweetForm: this.toggleTweetForm, currentUser: this.props.currentUser, displayMessage: this.props.displayMessage, raiseSidebarTweetCount: this.props.raiseSidebarTweetCount, __source: { fileName: _jsxFileName, lineNumber: 22 }, __self: this });
+    }
+
+    let component;
+
+    if (this.props.loggedIn) {
+      component =
+      _react2.default.createElement(_reactBootstrap.Col, { id: 'left_sidebar', xs: 4, md: 3, __source: { fileName: _jsxFileName, lineNumber: 29 }, __self: this },
+        _react2.default.createElement('div', { className: 'blue_top', __source: { fileName: _jsxFileName, lineNumber: 30 }, __self: this }),
+
+        _react2.default.createElement('div', { id: 'user_sidebar', __source: { fileName: _jsxFileName, lineNumber: 32 }, __self: this },
+          _react2.default.createElement('div', { className: 'user_profile_info', __source: { fileName: _jsxFileName, lineNumber: 33 }, __self: this },
+            _react2.default.createElement('h3', { __source: { fileName: _jsxFileName, lineNumber: 34 }, __self: this }, _react2.default.createElement(_reactRouterDom.Link, { to: userPath, __source: { fileName: _jsxFileName, lineNumber: 34 }, __self: this }, this.props.currentUser.name)),
+            _react2.default.createElement('aside', { __source: { fileName: _jsxFileName, lineNumber: 35 }, __self: this }, '@', _react2.default.createElement(_reactRouterDom.Link, { to: userPath, __source: { fileName: _jsxFileName, lineNumber: 35 }, __self: this }, this.props.currentUser.username))),
+
+          _react2.default.createElement('div', { className: 'user_stats user_profile_info', __source: { fileName: _jsxFileName, lineNumber: 37 }, __self: this },
+            _react2.default.createElement('dl', { __source: { fileName: _jsxFileName, lineNumber: 38 }, __self: this },
+              _react2.default.createElement('dt', { __source: { fileName: _jsxFileName, lineNumber: 39 }, __self: this }, 'Tweets'),
+              _react2.default.createElement('dd', { __source: { fileName: _jsxFileName, lineNumber: 40 }, __self: this }, this.props.currentUser.all_tweet_count)),
+
+            _react2.default.createElement('dl', { __source: { fileName: _jsxFileName, lineNumber: 42 }, __self: this },
+              _react2.default.createElement('dt', { __source: { fileName: _jsxFileName, lineNumber: 43 }, __self: this }, 'Following'),
+              _react2.default.createElement('dd', { __source: { fileName: _jsxFileName, lineNumber: 44 }, __self: this }, this.props.currentUser.following)),
+
+            _react2.default.createElement('dl', { __source: { fileName: _jsxFileName, lineNumber: 46 }, __self: this },
+              _react2.default.createElement('dt', { __source: { fileName: _jsxFileName, lineNumber: 47 }, __self: this }, 'Followers'),
+              _react2.default.createElement('dd', { __source: { fileName: _jsxFileName, lineNumber: 48 }, __self: this }, this.props.currentUser.followers))),
+
+
+          _react2.default.createElement('div', { className: 'user_profile_info', __source: { fileName: _jsxFileName, lineNumber: 51 }, __self: this },
+            _react2.default.createElement(_reactBootstrap.Button, { onClick: this.toggleTweetForm, __source: { fileName: _jsxFileName, lineNumber: 52 }, __self: this }, 'Tweet'))),
+
+
+        tweetForm);
+
+
+    } else {
+      component = _react2.default.createElement(_reactBootstrap.Col, { className: 'empty_sidebar', xs: 4, md: 3, __source: { fileName: _jsxFileName, lineNumber: 59 }, __self: this });
+    }
+
+    return component;
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Sidebar
+    currentUser={
+        Object {
+            "all_tweet_count": 2,
+            "followers": 1,
+            "following": 1,
+            "id": 1,
+            "name": "Ryan",
+            "retweet_count": 1,
+            "slug": "rg",
+            "token": "12345",
+            "tweet_count": 1,
+            "username": "RG",
+          }
+    }
+    loggedIn={true}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "bsClass": "col",
+      "children": Array [
+        <div
+          className="blue_top"
+/>,
+        <div
+          id="user_sidebar"
+>
+          <div
+                    className="user_profile_info"
+          >
+                    <h3>
+                              <Link
+                                        replace={false}
+                                        to="/users/rg"
+                              >
+                                        Ryan
+                              </Link>
+                    </h3>
+                    <aside>
+                              @
+                              <Link
+                                        replace={false}
+                                        to="/users/rg"
+                              >
+                                        RG
+                              </Link>
+                    </aside>
+          </div>
+          <div
+                    className="user_stats user_profile_info"
+          >
+                    <dl>
+                              <dt>
+                                        Tweets
+                              </dt>
+                              <dd>
+                                        2
+                              </dd>
+                    </dl>
+                    <dl>
+                              <dt>
+                                        Following
+                              </dt>
+                              <dd>
+                                        1
+                              </dd>
+                    </dl>
+                    <dl>
+                              <dt>
+                                        Followers
+                              </dt>
+                              <dd>
+                                        1
+                              </dd>
+                    </dl>
+          </div>
+          <div
+                    className="user_profile_info"
+          >
+                    <Button
+                              active={false}
+                              block={false}
+                              bsClass="btn"
+                              bsStyle="default"
+                              disabled={false}
+                              onClick={[Function]}
+                    >
+                              Tweet
+                    </Button>
+          </div>
+</div>,
+        undefined,
+      ],
+      "componentClass": "div",
+      "id": "left_sidebar",
+      "md": 3,
+      "xs": 4,
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "blue_top",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="user_profile_info"
+>
+              <h3>
+                            <Link
+                                          replace={false}
+                                          to="/users/rg"
+                            >
+                                          Ryan
+                            </Link>
+              </h3>
+              <aside>
+                            @
+                            <Link
+                                          replace={false}
+                                          to="/users/rg"
+                            >
+                                          RG
+                            </Link>
+              </aside>
+</div>,
+            <div
+              className="user_stats user_profile_info"
+>
+              <dl>
+                            <dt>
+                                          Tweets
+                            </dt>
+                            <dd>
+                                          2
+                            </dd>
+              </dl>
+              <dl>
+                            <dt>
+                                          Following
+                            </dt>
+                            <dd>
+                                          1
+                            </dd>
+              </dl>
+              <dl>
+                            <dt>
+                                          Followers
+                            </dt>
+                            <dd>
+                                          1
+                            </dd>
+              </dl>
+</div>,
+            <div
+              className="user_profile_info"
+>
+              <Button
+                            active={false}
+                            block={false}
+                            bsClass="btn"
+                            bsStyle="default"
+                            disabled={false}
+                            onClick={[Function]}
+              >
+                            Tweet
+              </Button>
+</div>,
+          ],
+          "id": "user_sidebar",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h3>
+                  <Link
+                                    replace={false}
+                                    to="/users/rg"
+                  >
+                                    Ryan
+                  </Link>
+</h3>,
+                <aside>
+                  @
+                  <Link
+                                    replace={false}
+                                    to="/users/rg"
+                  >
+                                    RG
+                  </Link>
+</aside>,
+              ],
+              "className": "user_profile_info",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <Link
+                    replace={false}
+                    to="/users/rg"
+>
+                    Ryan
+</Link>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Ryan",
+                    "replace": false,
+                    "to": "/users/rg",
+                  },
+                  "ref": null,
+                  "rendered": "Ryan",
+                  "type": [Function],
+                },
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "@",
+                    <Link
+                      replace={false}
+                      to="/users/rg"
+>
+                      RG
+</Link>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "@",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "RG",
+                      "replace": false,
+                      "to": "/users/rg",
+                    },
+                    "ref": null,
+                    "rendered": "RG",
+                    "type": [Function],
+                  },
+                ],
+                "type": "aside",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <dl>
+                  <dt>
+                                    Tweets
+                  </dt>
+                  <dd>
+                                    2
+                  </dd>
+</dl>,
+                <dl>
+                  <dt>
+                                    Following
+                  </dt>
+                  <dd>
+                                    1
+                  </dd>
+</dl>,
+                <dl>
+                  <dt>
+                                    Followers
+                  </dt>
+                  <dd>
+                                    1
+                  </dd>
+</dl>,
+              ],
+              "className": "user_stats user_profile_info",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <dt>
+                      Tweets
+</dt>,
+                    <dd>
+                      2
+</dd>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Tweets",
+                    },
+                    "ref": null,
+                    "rendered": "Tweets",
+                    "type": "dt",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": 2,
+                    },
+                    "ref": null,
+                    "rendered": 2,
+                    "type": "dd",
+                  },
+                ],
+                "type": "dl",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <dt>
+                      Following
+</dt>,
+                    <dd>
+                      1
+</dd>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Following",
+                    },
+                    "ref": null,
+                    "rendered": "Following",
+                    "type": "dt",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": 1,
+                    },
+                    "ref": null,
+                    "rendered": 1,
+                    "type": "dd",
+                  },
+                ],
+                "type": "dl",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <dt>
+                      Followers
+</dt>,
+                    <dd>
+                      1
+</dd>,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Followers",
+                    },
+                    "ref": null,
+                    "rendered": "Followers",
+                    "type": "dt",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": 1,
+                    },
+                    "ref": null,
+                    "rendered": 1,
+                    "type": "dd",
+                  },
+                ],
+                "type": "dl",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Button
+                active={false}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                disabled={false}
+                onClick={[Function]}
+>
+                Tweet
+</Button>,
+              "className": "user_profile_info",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": false,
+                "block": false,
+                "bsClass": "btn",
+                "bsStyle": "default",
+                "children": "Tweet",
+                "disabled": false,
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Tweet",
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "bsClass": "col",
+        "children": Array [
+          <div
+            className="blue_top"
+/>,
+          <div
+            id="user_sidebar"
+>
+            <div
+                        className="user_profile_info"
+            >
+                        <h3>
+                                    <Link
+                                                replace={false}
+                                                to="/users/rg"
+                                    >
+                                                Ryan
+                                    </Link>
+                        </h3>
+                        <aside>
+                                    @
+                                    <Link
+                                                replace={false}
+                                                to="/users/rg"
+                                    >
+                                                RG
+                                    </Link>
+                        </aside>
+            </div>
+            <div
+                        className="user_stats user_profile_info"
+            >
+                        <dl>
+                                    <dt>
+                                                Tweets
+                                    </dt>
+                                    <dd>
+                                                2
+                                    </dd>
+                        </dl>
+                        <dl>
+                                    <dt>
+                                                Following
+                                    </dt>
+                                    <dd>
+                                                1
+                                    </dd>
+                        </dl>
+                        <dl>
+                                    <dt>
+                                                Followers
+                                    </dt>
+                                    <dd>
+                                                1
+                                    </dd>
+                        </dl>
+            </div>
+            <div
+                        className="user_profile_info"
+            >
+                        <Button
+                                    active={false}
+                                    block={false}
+                                    bsClass="btn"
+                                    bsStyle="default"
+                                    disabled={false}
+                                    onClick={[Function]}
+                        >
+                                    Tweet
+                        </Button>
+            </div>
+</div>,
+          undefined,
+        ],
+        "componentClass": "div",
+        "id": "left_sidebar",
+        "md": 3,
+        "xs": 4,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "blue_top",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="user_profile_info"
+>
+                <h3>
+                                <Link
+                                                replace={false}
+                                                to="/users/rg"
+                                >
+                                                Ryan
+                                </Link>
+                </h3>
+                <aside>
+                                @
+                                <Link
+                                                replace={false}
+                                                to="/users/rg"
+                                >
+                                                RG
+                                </Link>
+                </aside>
+</div>,
+              <div
+                className="user_stats user_profile_info"
+>
+                <dl>
+                                <dt>
+                                                Tweets
+                                </dt>
+                                <dd>
+                                                2
+                                </dd>
+                </dl>
+                <dl>
+                                <dt>
+                                                Following
+                                </dt>
+                                <dd>
+                                                1
+                                </dd>
+                </dl>
+                <dl>
+                                <dt>
+                                                Followers
+                                </dt>
+                                <dd>
+                                                1
+                                </dd>
+                </dl>
+</div>,
+              <div
+                className="user_profile_info"
+>
+                <Button
+                                active={false}
+                                block={false}
+                                bsClass="btn"
+                                bsStyle="default"
+                                disabled={false}
+                                onClick={[Function]}
+                >
+                                Tweet
+                </Button>
+</div>,
+            ],
+            "id": "user_sidebar",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <h3>
+                    <Link
+                                        replace={false}
+                                        to="/users/rg"
+                    >
+                                        Ryan
+                    </Link>
+</h3>,
+                  <aside>
+                    @
+                    <Link
+                                        replace={false}
+                                        to="/users/rg"
+                    >
+                                        RG
+                    </Link>
+</aside>,
+                ],
+                "className": "user_profile_info",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <Link
+                      replace={false}
+                      to="/users/rg"
+>
+                      Ryan
+</Link>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": "Ryan",
+                      "replace": false,
+                      "to": "/users/rg",
+                    },
+                    "ref": null,
+                    "rendered": "Ryan",
+                    "type": [Function],
+                  },
+                  "type": "h3",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "@",
+                      <Link
+                        replace={false}
+                        to="/users/rg"
+>
+                        RG
+</Link>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "@",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": "RG",
+                        "replace": false,
+                        "to": "/users/rg",
+                      },
+                      "ref": null,
+                      "rendered": "RG",
+                      "type": [Function],
+                    },
+                  ],
+                  "type": "aside",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <dl>
+                    <dt>
+                                        Tweets
+                    </dt>
+                    <dd>
+                                        2
+                    </dd>
+</dl>,
+                  <dl>
+                    <dt>
+                                        Following
+                    </dt>
+                    <dd>
+                                        1
+                    </dd>
+</dl>,
+                  <dl>
+                    <dt>
+                                        Followers
+                    </dt>
+                    <dd>
+                                        1
+                    </dd>
+</dl>,
+                ],
+                "className": "user_stats user_profile_info",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <dt>
+                        Tweets
+</dt>,
+                      <dd>
+                        2
+</dd>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Tweets",
+                      },
+                      "ref": null,
+                      "rendered": "Tweets",
+                      "type": "dt",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": 2,
+                      },
+                      "ref": null,
+                      "rendered": 2,
+                      "type": "dd",
+                    },
+                  ],
+                  "type": "dl",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <dt>
+                        Following
+</dt>,
+                      <dd>
+                        1
+</dd>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Following",
+                      },
+                      "ref": null,
+                      "rendered": "Following",
+                      "type": "dt",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": 1,
+                      },
+                      "ref": null,
+                      "rendered": 1,
+                      "type": "dd",
+                    },
+                  ],
+                  "type": "dl",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <dt>
+                        Followers
+</dt>,
+                      <dd>
+                        1
+</dd>,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Followers",
+                      },
+                      "ref": null,
+                      "rendered": "Followers",
+                      "type": "dt",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": 1,
+                      },
+                      "ref": null,
+                      "rendered": 1,
+                      "type": "dd",
+                    },
+                  ],
+                  "type": "dl",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Button
+                  active={false}
+                  block={false}
+                  bsClass="btn"
+                  bsStyle="default"
+                  disabled={false}
+                  onClick={[Function]}
+>
+                  Tweet
+</Button>,
+                "className": "user_profile_info",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "active": false,
+                  "block": false,
+                  "bsClass": "btn",
+                  "bsStyle": "default",
+                  "children": "Tweet",
+                  "disabled": false,
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": "Tweet",
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        undefined,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

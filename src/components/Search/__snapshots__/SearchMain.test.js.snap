@@ -1,0 +1,317 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class SearchMain extends _react2.default.Component {
+  render() {
+    return (
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 8 }, __self: this },
+        _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 9 }, __self: this },
+          _react2.default.createElement('h1', { className: 'section_header', __source: { fileName: _jsxFileName, lineNumber: 10 }, __self: this }, 'Hashtag Search Results')),
+
+        _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 12 }, __self: this },
+          _react2.default.createElement(_reactRouterDom.Switch, { __source: { fileName: _jsxFileName, lineNumber: 13 }, __self: this },
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/search', render: () => _react2.default.createElement(_.EnterSearch, { __source: { fileName: _jsxFileName, lineNumber: 14 }, __self: this }), __source: { fileName: _jsxFileName, lineNumber: 14 }, __self: this }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/search/:search_field', render: props => _react2.default.createElement(_.SearchResults, Object.assign({}, props, { loggedIn: this.props.loggedIn, currentUser: this.props.currentUser, displayMessage: this.props.displayMessage, navigateToSearch: this.props.navigateToSearch, __source: { fileName: _jsxFileName, lineNumber: 15 }, __self: this })), __source: { fileName: _jsxFileName, lineNumber: 15 }, __self: this })))));
+
+
+
+
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SearchMain
+    currentUser={
+        Object {
+            "all_tweet_count": 2,
+            "followers": 1,
+            "following": 1,
+            "id": 1,
+            "name": "Ryan",
+            "retweet_count": 1,
+            "slug": "rg",
+            "token": "12345",
+            "tweet_count": 1,
+            "username": "RG",
+          }
+    }
+    displayMessage={[Function]}
+    loggedIn={true}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          <h1
+                    className="section_header"
+          >
+                    Hashtag Search Results
+          </h1>
+</div>,
+        <div>
+          <Switch>
+                    <Route
+                              exact={true}
+                              path="/search"
+                              render={[Function]}
+                    />
+                    <Route
+                              exact={true}
+                              path="/search/:search_field"
+                              render={[Function]}
+                    />
+          </Switch>
+</div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <h1
+            className="section_header"
+>
+            Hashtag Search Results
+</h1>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Hashtag Search Results",
+            "className": "section_header",
+          },
+          "ref": null,
+          "rendered": "Hashtag Search Results",
+          "type": "h1",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Switch>
+            <Route
+                        exact={true}
+                        path="/search"
+                        render={[Function]}
+            />
+            <Route
+                        exact={true}
+                        path="/search/:search_field"
+                        render={[Function]}
+            />
+</Switch>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Route
+                exact={true}
+                path="/search"
+                render={[Function]}
+/>,
+              <Route
+                exact={true}
+                path="/search/:search_field"
+                render={[Function]}
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "exact": true,
+                "path": "/search",
+                "render": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "exact": true,
+                "path": "/search/:search_field",
+                "render": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            <h1
+                        className="section_header"
+            >
+                        Hashtag Search Results
+            </h1>
+</div>,
+          <div>
+            <Switch>
+                        <Route
+                                    exact={true}
+                                    path="/search"
+                                    render={[Function]}
+                        />
+                        <Route
+                                    exact={true}
+                                    path="/search/:search_field"
+                                    render={[Function]}
+                        />
+            </Switch>
+</div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <h1
+              className="section_header"
+>
+              Hashtag Search Results
+</h1>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Hashtag Search Results",
+              "className": "section_header",
+            },
+            "ref": null,
+            "rendered": "Hashtag Search Results",
+            "type": "h1",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Switch>
+              <Route
+                            exact={true}
+                            path="/search"
+                            render={[Function]}
+              />
+              <Route
+                            exact={true}
+                            path="/search/:search_field"
+                            render={[Function]}
+              />
+</Switch>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Route
+                  exact={true}
+                  path="/search"
+                  render={[Function]}
+/>,
+                <Route
+                  exact={true}
+                  path="/search/:search_field"
+                  render={[Function]}
+/>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "exact": true,
+                  "path": "/search",
+                  "render": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "exact": true,
+                  "path": "/search/:search_field",
+                  "render": [Function],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

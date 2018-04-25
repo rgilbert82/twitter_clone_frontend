@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class MessageWindow extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.closeMessage = this.closeMessage.bind(this);
+  }
+
+  closeMessage(e) {
+    e.preventDefault();
+    this.props.closeMessage();
+  }
+
+  render() {
+    return (
+      _react2.default.createElement(_reactBootstrap.Alert, { className: 'message_window', __source: { fileName: _jsxFileName, lineNumber: 17 }, __self: this },
+        _react2.default.createElement('p', { __source: { fileName: _jsxFileName, lineNumber: 18 }, __self: this }, this.props.message),
+        _react2.default.createElement('a', { onClick: this.closeMessage, href: '', __source: { fileName: _jsxFileName, lineNumber: 19 }, __self: this }, 'close')));
+
+
+  }} renders properly 1`] = `
+<MessageWindow
+  closeMessage={[Function]}
+  message="Error Message"
+/>
+`;

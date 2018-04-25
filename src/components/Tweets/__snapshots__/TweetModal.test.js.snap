@@ -1,0 +1,919 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class TweetModal extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tweet: {},
+      comments: [],
+      tweetLoaded: false,
+      tweetDeleted: false };
+
+
+    this.fetchTweet = this.fetchTweet.bind(this);
+    this.fetchComments = this.fetchComments.bind(this);
+    this.createNewComment = this.createNewComment.bind(this);
+    this.createRetweet = this.createRetweet.bind(this);
+    this.editTweetBody = this.editTweetBody.bind(this);
+    this.deleteTweet = this.deleteTweet.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
+    this.formatDatetime = this.formatDatetime.bind(this);
+    this.navigateToProfile = this.navigateToProfile.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+
+    if (this._isMounted) {
+      this.fetchTweet();
+    }
+  }
+
+  componentDidUpdate() {
+    const elements = document.getElementsByClassName('tweet_body_text');
+
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].innerHTML = (0, _misc.hashtagify)(elements[i].innerHTML);
+    }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  fetchTweet() {
+    return (0, _tweets.getTweetAPI)(this.props.match.params.tweet_slug).
+    then(data => {
+      if (this._isMounted) {
+        this.setState({ tweet: data });
+        this.fetchComments();
+      }
+    }).catch(() => {
+      if (this._isMounted) {
+        this.props.displayMessage('There was an error loading the tweet');
+      }
+    });
+  }
+
+  fetchComments() {
+    return (0, _comments.getCommentsAPI)(this.state.tweet.id).
+    then(data => {
+      this.setState({ comments: data, tweetLoaded: true });
+    }).catch(() => {
+      this.props.displayMessage('There was an error loading the comments');
+    });
+  }
+
+  createRetweet() {
+    const userPath = \`/users/\${this.props.currentUser.slug}\`;
+
+    return (0, _retweets.createRetweetAPI)(this.state.tweet.id).
+    then(data => {
+      this.props.raiseSidebarTweetCount();
+      this.props.history.push(userPath);
+    }).catch(() => {
+      this.props.displayMessage('There was an error retweeting');
+    });
+  }
+
+  createNewComment(commentBody) {
+    let commentData;
+
+    if (this.props.loggedIn && this.state.tweetLoaded) {
+      commentData = { body: commentBody, user_id: this.props.currentUser.id, tweet_id: this.state.tweet.id };
+      return (0, _comments.createCommentAPI)(commentData).
+      then(data => {
+        this.setState({
+          comments: this.state.comments.concat([data]) });
+
+      }).catch(() => {
+        this.props.displayMessage('There was an error creating the comment');
+      });
+    }
+  }
+
+  editTweetBody(tweetObj) {
+    let oldData = this.state.tweet;
+    let oldImage = oldData.image;
+    const tweetData = {
+      body: tweetObj.body,
+      image: tweetObj.image,
+      user_id: this.state.tweet.user_id,
+      id: this.state.tweet.id };
+
+
+    return (0, _tweets.editTweetAPI)(tweetData).
+    then(data => {
+      oldData.body = data.body;
+      oldData.image = data.image;
+      this.setState({ tweet: oldData });
+      if (oldImage.length > 0 && oldImage !== oldData.image) {
+        oldImage = oldImage.replace('https://rg-tweeter.s3.amazonaws.com/', '');
+        (0, _aws.deletePhoto)(oldImage);
+      }
+    }).catch(() => {
+      this.props.displayMessage('There was an error updating the tweet');
+    });
+  }
+
+  deleteTweet() {
+    let tweetImage = this.state.tweet.image;
+
+    if (this.state.tweetLoaded) {
+      return (0, _tweets.deleteTweetAPI)(this.state.tweet.id).
+      then(() => {
+        if (tweetImage) {
+          tweetImage = tweetImage.replace('https://rg-tweeter.s3.amazonaws.com/', '');
+          (0, _aws.deletePhoto)(tweetImage);
+        }
+        this.setState({ tweetDeleted: true });
+      }).catch(() => {
+        this.props.displayMessage('There was an error deleting the tweet');
+      });
+    }
+  }
+
+  deleteComment(commentID) {
+    return (0, _comments.deleteCommentAPI)(commentID).
+    then(() => {
+      this.setState({ comments: this.state.comments.filter(c => {return c.id !== commentID;}) });
+    }).catch(() => {
+      this.props.displayMessage('There was an error deleting the comment');
+    });
+  }
+
+  formatDatetime(dt) {
+    let dateTime = new Date(dt).toDateString() + ' ' +
+    new Date(dt).toLocaleTimeString();
+
+    return dateTime;
+  }
+
+  navigateToProfile() {
+    const userPath = \`/users/\${this.state.tweet.user_slug}\`;
+    this.props.history.push(userPath);
+  }
+
+  render() {
+    const hasTopBorder = this.state.comments.length > 0 ? "has_top_border" : "";
+    let commentSection;
+    let addNewComment;
+    let retweetLink;
+    let tweetImage;
+    let userPath;
+    let editBox;
+    let commentsList = this.state.comments.map(comment => {
+      return _react2.default.createElement('li', { className: 'list_item comment_list_item', key: comment.id, __source: { fileName: _jsxFileName, lineNumber: 175 }, __self: this }, _react2.default.createElement(_.TweetCommentListItem, { comment: comment, loggedIn: this.props.loggedIn, currentUser: this.props.currentUser, deleteComment: this.deleteComment, displayMessage: this.props.displayMessage, __source: { fileName: _jsxFileName, lineNumber: 175 }, __self: this }));
+    });
+
+    if (this.state.tweet.image) {
+      tweetImage =
+      _react2.default.createElement('div', { className: 'tweet_image', __source: { fileName: _jsxFileName, lineNumber: 180 }, __self: this },
+        _react2.default.createElement('img', { src: this.state.tweet.image, alt: 'user uploaded pic', __source: { fileName: _jsxFileName, lineNumber: 181 }, __self: this }));
+
+
+    }
+
+    if (this.props.loggedIn && this.state.tweetLoaded) {
+      addNewComment = _react2.default.createElement(_.CreateCommentForm, { createNewComment: this.createNewComment, __source: { fileName: _jsxFileName, lineNumber: 187 }, __self: this });
+      if (!this.props.isCurrentUserPage()) {
+        retweetLink = _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 189 }, __self: this }, _react2.default.createElement(_reactBootstrap.Button, { onClick: this.createRetweet, __source: { fileName: _jsxFileName, lineNumber: 189 }, __self: this }, 'Retweet'));
+      }
+    }
+
+    if (this.props.loggedIn && this.state.tweetLoaded && this.props.isCurrentUserPage()) {
+      editBox = _react2.default.createElement(_.EditTweet, { body: this.state.tweet.body, editTweetBody: this.editTweetBody, deleteTweet: this.deleteTweet, displayMessage: this.props.displayMessage, currentUser: this.props.currentUser, __source: { fileName: _jsxFileName, lineNumber: 194 }, __self: this });
+    }
+
+    if (this.state.tweetLoaded) {
+      commentSection =
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 199 }, __self: this },
+        _react2.default.createElement('h2', { className: 'tweet_sub_header sub_header', __source: { fileName: _jsxFileName, lineNumber: 200 }, __self: this }, 'Comments'),
+        addNewComment,
+        _react2.default.createElement('ul', { className: hasTopBorder, __source: { fileName: _jsxFileName, lineNumber: 202 }, __self: this },
+          commentsList));
+
+
+
+    } else {
+      commentSection = _react2.default.createElement(_Misc.PageLoading, { __source: { fileName: _jsxFileName, lineNumber: 208 }, __self: this });
+    }
+
+    if (this.state.tweetDeleted) {
+      userPath = \`/users/\${this.state.tweet.user_slug}\`;
+      return _react2.default.createElement(_reactRouterDom.Redirect, { to: userPath, __source: { fileName: _jsxFileName, lineNumber: 213 }, __self: this });
+    } else {
+      userPath = \`/users/\${this.state.tweet.user_slug}\`;
+
+      return (
+        _react2.default.createElement('div', { id: 'modal_wrapper', __source: { fileName: _jsxFileName, lineNumber: 218 }, __self: this },
+          _react2.default.createElement(_Misc.DarkLayer, { closeModal: this.navigateToProfile, __source: { fileName: _jsxFileName, lineNumber: 219 }, __self: this }),
+          _react2.default.createElement('div', { id: 'tweet_modal', __source: { fileName: _jsxFileName, lineNumber: 220 }, __self: this },
+            _react2.default.createElement('h1', { className: 'tweet_header', __source: { fileName: _jsxFileName, lineNumber: 221 }, __self: this }, this.state.tweet.name, _react2.default.createElement('span', { __source: { fileName: _jsxFileName, lineNumber: 221 }, __self: this }, '@', this.state.tweet.username)),
+            _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 222 }, __self: this },
+              _react2.default.createElement('div', { className: 'inner_tweet_list_item tweet_modal_body', __source: { fileName: _jsxFileName, lineNumber: 223 }, __self: this },
+                _react2.default.createElement('p', { onClick: this.props.navigateToSearch, className: 'tweet_body_text', __source: { fileName: _jsxFileName, lineNumber: 224 }, __self: this }, this.state.tweet.body),
+                tweetImage),
+
+              _react2.default.createElement('div', { className: 'tweet_modal_buttons', __source: { fileName: _jsxFileName, lineNumber: 227 }, __self: this },
+                retweetLink,
+                editBox),
+
+              _react2.default.createElement('div', { className: 'tweet_list_item_footer', __source: { fileName: _jsxFileName, lineNumber: 231 }, __self: this },
+                _react2.default.createElement('small', { className: 'list_item_datetime', __source: { fileName: _jsxFileName, lineNumber: 232 }, __self: this }, this.formatDatetime(this.state.tweet.created_at))),
+
+              _react2.default.createElement(_reactRouterDom.Link, { to: userPath, __source: { fileName: _jsxFileName, lineNumber: 234 }, __self: this }, this.state.tweet.username, '\\'s Profile')),
+
+            _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 236 }, __self: this },
+              commentSection))));
+
+
+
+
+    }
+  }} renders properly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TweetModal
+    currentUser={
+        Object {
+            "all_tweet_count": 2,
+            "followers": 1,
+            "following": 1,
+            "id": 1,
+            "name": "Ryan",
+            "retweet_count": 1,
+            "slug": "rg",
+            "token": "12345",
+            "tweet_count": 1,
+            "username": "RG",
+          }
+    }
+    displayMessage={[Function]}
+    loggedIn={true}
+    match={
+        Object {
+            "params": Object {
+              "tweet_slug": "tweet",
+            },
+          }
+    }
+    prevPath="/"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <DarkLayer
+          closeModal={[Function]}
+/>,
+        <div
+          id="tweet_modal"
+>
+          <h1
+                    className="tweet_header"
+          >
+                    <span>
+                              @
+                    </span>
+          </h1>
+          <div>
+                    <div
+                              className="inner_tweet_list_item tweet_modal_body"
+                    >
+                              <p
+                                        className="tweet_body_text"
+                                        onClick={undefined}
+                              />
+                    </div>
+                    <div
+                              className="tweet_modal_buttons"
+                    >
+                              
+                    </div>
+                    <div
+                              className="tweet_list_item_footer"
+                    >
+                              <small
+                                        className="list_item_datetime"
+                              >
+                                        Invalid Date Invalid Date
+                              </small>
+                    </div>
+                    <Link
+                              replace={false}
+                              to="/users/undefined"
+                    >
+                              's Profile
+                    </Link>
+          </div>
+          <div>
+                    <PageLoading />
+          </div>
+</div>,
+      ],
+      "id": "modal_wrapper",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "closeModal": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h1
+              className="tweet_header"
+>
+              <span>
+                            @
+              </span>
+</h1>,
+            <div>
+              <div
+                            className="inner_tweet_list_item tweet_modal_body"
+              >
+                            <p
+                                          className="tweet_body_text"
+                                          onClick={undefined}
+                            />
+              </div>
+              <div
+                            className="tweet_modal_buttons"
+              >
+                            
+              </div>
+              <div
+                            className="tweet_list_item_footer"
+              >
+                            <small
+                                          className="list_item_datetime"
+                            >
+                                          Invalid Date Invalid Date
+                            </small>
+              </div>
+              <Link
+                            replace={false}
+                            to="/users/undefined"
+              >
+                            's Profile
+              </Link>
+</div>,
+            <div>
+              <PageLoading />
+</div>,
+          ],
+          "id": "tweet_modal",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                undefined,
+                <span>
+                  @
+</span>,
+              ],
+              "className": "tweet_header",
+            },
+            "ref": null,
+            "rendered": Array [
+              undefined,
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "@",
+                    undefined,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "@",
+                  undefined,
+                ],
+                "type": "span",
+              },
+            ],
+            "type": "h1",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div
+                  className="inner_tweet_list_item tweet_modal_body"
+>
+                  <p
+                                    className="tweet_body_text"
+                                    onClick={undefined}
+                  />
+</div>,
+                <div
+                  className="tweet_modal_buttons"
+>
+                  
+</div>,
+                <div
+                  className="tweet_list_item_footer"
+>
+                  <small
+                                    className="list_item_datetime"
+                  >
+                                    Invalid Date Invalid Date
+                  </small>
+</div>,
+                <Link
+                  replace={false}
+                  to="/users/undefined"
+>
+                  's Profile
+</Link>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <p
+                      className="tweet_body_text"
+                      onClick={undefined}
+/>,
+                    undefined,
+                  ],
+                  "className": "inner_tweet_list_item tweet_modal_body",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": undefined,
+                      "className": "tweet_body_text",
+                      "onClick": undefined,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "p",
+                  },
+                  undefined,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    undefined,
+                    undefined,
+                  ],
+                  "className": "tweet_modal_buttons",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                  undefined,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <small
+                    className="list_item_datetime"
+>
+                    Invalid Date Invalid Date
+</small>,
+                  "className": "tweet_list_item_footer",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Invalid Date Invalid Date",
+                    "className": "list_item_datetime",
+                  },
+                  "ref": null,
+                  "rendered": "Invalid Date Invalid Date",
+                  "type": "small",
+                },
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    undefined,
+                    "'s Profile",
+                  ],
+                  "replace": false,
+                  "to": "/users/undefined",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                  "'s Profile",
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <PageLoading />,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <DarkLayer
+            closeModal={[Function]}
+/>,
+          <div
+            id="tweet_modal"
+>
+            <h1
+                        className="tweet_header"
+            >
+                        <span>
+                                    @
+                        </span>
+            </h1>
+            <div>
+                        <div
+                                    className="inner_tweet_list_item tweet_modal_body"
+                        >
+                                    <p
+                                                className="tweet_body_text"
+                                                onClick={undefined}
+                                    />
+                        </div>
+                        <div
+                                    className="tweet_modal_buttons"
+                        >
+                                    
+                        </div>
+                        <div
+                                    className="tweet_list_item_footer"
+                        >
+                                    <small
+                                                className="list_item_datetime"
+                                    >
+                                                Invalid Date Invalid Date
+                                    </small>
+                        </div>
+                        <Link
+                                    replace={false}
+                                    to="/users/undefined"
+                        >
+                                    's Profile
+                        </Link>
+            </div>
+            <div>
+                        <PageLoading />
+            </div>
+</div>,
+        ],
+        "id": "modal_wrapper",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "closeModal": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h1
+                className="tweet_header"
+>
+                <span>
+                                @
+                </span>
+</h1>,
+              <div>
+                <div
+                                className="inner_tweet_list_item tweet_modal_body"
+                >
+                                <p
+                                                className="tweet_body_text"
+                                                onClick={undefined}
+                                />
+                </div>
+                <div
+                                className="tweet_modal_buttons"
+                >
+                                
+                </div>
+                <div
+                                className="tweet_list_item_footer"
+                >
+                                <small
+                                                className="list_item_datetime"
+                                >
+                                                Invalid Date Invalid Date
+                                </small>
+                </div>
+                <Link
+                                replace={false}
+                                to="/users/undefined"
+                >
+                                's Profile
+                </Link>
+</div>,
+              <div>
+                <PageLoading />
+</div>,
+            ],
+            "id": "tweet_modal",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  undefined,
+                  <span>
+                    @
+</span>,
+                ],
+                "className": "tweet_header",
+              },
+              "ref": null,
+              "rendered": Array [
+                undefined,
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "@",
+                      undefined,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "@",
+                    undefined,
+                  ],
+                  "type": "span",
+                },
+              ],
+              "type": "h1",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="inner_tweet_list_item tweet_modal_body"
+>
+                    <p
+                                        className="tweet_body_text"
+                                        onClick={undefined}
+                    />
+</div>,
+                  <div
+                    className="tweet_modal_buttons"
+>
+                    
+</div>,
+                  <div
+                    className="tweet_list_item_footer"
+>
+                    <small
+                                        className="list_item_datetime"
+                    >
+                                        Invalid Date Invalid Date
+                    </small>
+</div>,
+                  <Link
+                    replace={false}
+                    to="/users/undefined"
+>
+                    's Profile
+</Link>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <p
+                        className="tweet_body_text"
+                        onClick={undefined}
+/>,
+                      undefined,
+                    ],
+                    "className": "inner_tweet_list_item tweet_modal_body",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": undefined,
+                        "className": "tweet_body_text",
+                        "onClick": undefined,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "p",
+                    },
+                    undefined,
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      undefined,
+                      undefined,
+                    ],
+                    "className": "tweet_modal_buttons",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                    undefined,
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <small
+                      className="list_item_datetime"
+>
+                      Invalid Date Invalid Date
+</small>,
+                    "className": "tweet_list_item_footer",
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Invalid Date Invalid Date",
+                      "className": "list_item_datetime",
+                    },
+                    "ref": null,
+                    "rendered": "Invalid Date Invalid Date",
+                    "type": "small",
+                  },
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      undefined,
+                      "'s Profile",
+                    ],
+                    "replace": false,
+                    "to": "/users/undefined",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                    "'s Profile",
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <PageLoading />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

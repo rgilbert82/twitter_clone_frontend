@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class DarkLayer extends _react2.default.Component {
+  constructor(props) {
+    super(props);
+    this.closeLayer = this.closeLayer.bind(this);
+  }
+
+  closeLayer(e) {
+    e.preventDefault();
+    this.props.closeModal();
+  }
+
+  render() {
+    return (
+      _react2.default.createElement("div", { onClick: this.closeLayer, className: "dark_layer", __source: { fileName: _jsxFileName, lineNumber: 16 }, __self: this },
+        _react2.default.createElement("a", { href: "", className: "close_modal", __source: { fileName: _jsxFileName, lineNumber: 17 }, __self: this }, "close")));
+
+
+  }} renders properly 1`] = `<DarkLayer />`;
