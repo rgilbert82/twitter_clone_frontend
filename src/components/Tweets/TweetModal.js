@@ -32,10 +32,7 @@ export default class TweetModal extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-
-    if (this._isMounted) {
-      this.fetchTweet();
-    }
+    this.fetchTweet();
   }
 
   componentDidUpdate() {
@@ -67,9 +64,13 @@ export default class TweetModal extends React.Component {
   fetchComments() {
     return getCommentsAPI(this.state.tweet.id)
       .then((data) => {
-        this.setState({ comments: data, tweetLoaded: true });
+        if (this._isMounted) {
+          this.setState({ comments: data, tweetLoaded: true });
+        }
       }).catch(() => {
-        this.props.displayMessage('There was an error loading the comments')
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error loading the comments');
+        }
       });
   }
 
@@ -78,10 +79,14 @@ export default class TweetModal extends React.Component {
 
     return createRetweetAPI(this.state.tweet.id)
       .then((data) => {
-        this.props.raiseSidebarTweetCount();
-        this.props.history.push(userPath);
+        if (this._isMounted) {
+          this.props.raiseSidebarTweetCount();
+          this.props.history.push(userPath);
+        }
       }).catch(() => {
-        this.props.displayMessage('There was an error retweeting');
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error retweeting');
+        }
       });
   }
 
@@ -92,11 +97,15 @@ export default class TweetModal extends React.Component {
       commentData = { body: commentBody, user_id: this.props.currentUser.id, tweet_id: this.state.tweet.id };
       return createCommentAPI(commentData)
         .then((data) => {
-          this.setState({
-            comments: this.state.comments.concat([data])
-          });
+          if (this._isMounted) {
+            this.setState({
+              comments: this.state.comments.concat([data])
+            });
+          }
         }).catch(() => {
-          this.props.displayMessage('There was an error creating the comment');
+          if (this._isMounted) {
+            this.props.displayMessage('There was an error creating the comment');
+          }
         });
     }
   }
@@ -113,15 +122,19 @@ export default class TweetModal extends React.Component {
 
     return editTweetAPI(tweetData)
       .then((data) => {
-        oldData.body = data.body;
-        oldData.image = data.image;
-        this.setState({ tweet: oldData });
-        if (oldImage.length > 0 && oldImage !== oldData.image) {
-          oldImage = oldImage.replace('https://rg-tweeter.s3.amazonaws.com/', '');
-          deletePhoto(oldImage);
+        if (this._isMounted) {
+          oldData.body = data.body;
+          oldData.image = data.image;
+          this.setState({ tweet: oldData });
+          if (oldImage.length > 0 && oldImage !== oldData.image) {
+            oldImage = oldImage.replace('https://rg-tweeter.s3.amazonaws.com/', '');
+            deletePhoto(oldImage);
+          }
         }
       }).catch(() => {
-        this.props.displayMessage('There was an error updating the tweet');
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error updating the tweet');
+        }
       });
   }
 
@@ -131,13 +144,17 @@ export default class TweetModal extends React.Component {
     if (this.state.tweetLoaded) {
       return deleteTweetAPI(this.state.tweet.id)
         .then(() => {
-          if (tweetImage) {
-            tweetImage = tweetImage.replace('https://rg-tweeter.s3.amazonaws.com/', '');
-            deletePhoto(tweetImage);
+          if (this._isMounted) {
+            if (tweetImage) {
+              tweetImage = tweetImage.replace('https://rg-tweeter.s3.amazonaws.com/', '');
+              deletePhoto(tweetImage);
+            }
+            this.setState({ tweetDeleted: true });
           }
-          this.setState({ tweetDeleted: true });
         }).catch(() => {
-          this.props.displayMessage('There was an error deleting the tweet');
+          if (this._isMounted) {
+            this.props.displayMessage('There was an error deleting the tweet');
+          }
         });
     }
   }
@@ -145,9 +162,13 @@ export default class TweetModal extends React.Component {
   deleteComment(commentID) {
     return deleteCommentAPI(commentID)
       .then(() => {
-        this.setState({ comments: this.state.comments.filter((c) => { return c.id !== commentID })});
+        if (this._isMounted) {
+          this.setState({ comments: this.state.comments.filter((c) => { return c.id !== commentID })});
+        }
       }).catch(() => {
-        this.props.displayMessage('There was an error deleting the comment');
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error deleting the comment');
+        }
       });
   }
 

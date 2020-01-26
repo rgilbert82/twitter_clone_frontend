@@ -19,10 +19,8 @@ export default class SearchResults extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    if (this._isMounted) {
-      this.fetchResults();
-      window.addEventListener('scroll', this.scrollListener);
-    }
+    this.fetchResults();
+    window.addEventListener('scroll', this.scrollListener);
   }
 
   componentWillUnmount() {
@@ -58,10 +56,14 @@ export default class SearchResults extends React.Component {
 
     return getSearchResultsAPI(searchField)
       .then((data) => {
-        resultsData = data.sort((a, b) => { return new Date(b.created_at) - new Date(a.created_at); });
-        this.setState({ results: resultsData, resultsFeed: resultsData.slice(0, 8), resultsLoaded: true });
+        if (this._isMounted) {
+          resultsData = data.sort((a, b) => { return new Date(b.created_at) - new Date(a.created_at); });
+          this.setState({ results: resultsData, resultsFeed: resultsData.slice(0, 8), resultsLoaded: true });
+        }
       }).catch((err) => {
-        this.props.displayMessage('Oops! There was an error loading the search results.');
+        if (this._isMounted) {
+          this.props.displayMessage('Oops! There was an error loading the search results.');
+        }
       });
   }
 

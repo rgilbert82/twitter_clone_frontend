@@ -16,11 +16,8 @@ export default class AllUsers extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-
-    if (this._isMounted) {
-      this.fetchUsers();
-      window.addEventListener('scroll', this.scrollListener);
-    }
+    this.fetchUsers();
+    window.addEventListener('scroll', this.scrollListener);
   }
 
   componentWillUnmount() {
@@ -39,9 +36,13 @@ export default class AllUsers extends React.Component {
   fetchUsers() {
     return getUsersAPI()
       .then((data) => {
-        this.setState({ users: data, usersFeed: data.slice(0, 15) });
+        if (this._isMounted) {
+          this.setState({ users: data, usersFeed: data.slice(0, 15) });
+        }
       }).catch(() => {
-        this.props.displayMessage('Oops! Something went wrong loading this page!');
+        if (this._isMounted) {
+          this.props.displayMessage('Oops! Something went wrong loading this page!');
+        }
       });
   }
 

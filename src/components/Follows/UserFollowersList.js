@@ -12,9 +12,7 @@ export default class UserFollowersList extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    if (this._isMounted) {
-      this.fetchFollowers();
-    }
+    this.fetchFollowers();
   }
 
   componendWillUnmount() {
@@ -24,9 +22,13 @@ export default class UserFollowersList extends React.Component {
   fetchFollowers() {
     return getUserFollowersAPI(this.props.user_id)
       .then((data) => {
-        this.setState({ followers: data });
+        if (this._isMounted) {
+          this.setState({ followers: data });
+        }
       }).catch(() => {
-        this.props.displayMessage('There was an error loading the followers');
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error loading the followers');
+        }
       });
   }
 

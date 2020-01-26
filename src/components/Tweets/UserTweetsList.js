@@ -22,11 +22,8 @@ export default class UserTweetsList extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-
-    if (this._isMounted) {
-      this.fetchTweets();
-      window.addEventListener('scroll', this.scrollListener);
-    }
+    this.fetchTweets();
+    window.addEventListener('scroll', this.scrollListener);
   }
 
   componentWillUnmount() {
@@ -69,26 +66,34 @@ export default class UserTweetsList extends React.Component {
   deleteTweet(tweetID) {
     return deleteTweetAPI(tweetID)
       .then(() => {
-        this.setState({
-          tweets: this.state.tweets.filter((tweet) => { return tweet.id !== tweetID }),
-          tweetsFeed: this.state.tweetsFeed.filter((tweet) => { return tweet.id !== tweetID })
-         });
-        this.props.lowerTweetCount();
+        if (this._isMounted) {
+          this.setState({
+            tweets: this.state.tweets.filter((tweet) => { return tweet.id !== tweetID }),
+            tweetsFeed: this.state.tweetsFeed.filter((tweet) => { return tweet.id !== tweetID })
+           });
+          this.props.lowerTweetCount();
+        }
       }).catch(() => {
-        this.props.displayMessage('There was an error deleting the tweet');
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error deleting the tweet');
+        }
       });
   }
 
   deleteRetweet(retweetID) {
     return deleteRetweetAPI(retweetID)
       .then(() => {
-        this.setState({
-          tweets: this.state.tweets.filter((tweet) => { return tweet.retweet_id !== retweetID }),
-          tweetsFeed: this.state.tweetsFeed.filter((tweet) => { return tweet.retweet_id !== retweetID })
-         });
-        this.props.lowerTweetCount();
+        if (this._isMounted) {
+          this.setState({
+            tweets: this.state.tweets.filter((tweet) => { return tweet.retweet_id !== retweetID }),
+            tweetsFeed: this.state.tweetsFeed.filter((tweet) => { return tweet.retweet_id !== retweetID })
+           });
+          this.props.lowerTweetCount();
+        }
       }).catch(() => {
-        this.props.displayMessage('There was an error deleting the retweet');
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error deleting the retweet');
+        }
       });
   }
 

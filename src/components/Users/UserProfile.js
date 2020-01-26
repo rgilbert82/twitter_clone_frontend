@@ -28,9 +28,7 @@ export default class UserProfile extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    if (this._isMounted) {
-      this.fetchUser();
-    }
+    this.fetchUser();
   }
 
   componentWillUnmount() {
@@ -58,13 +56,17 @@ export default class UserProfile extends React.Component {
   fetchUser() {
     return getUserAPI(this.props.match.params.slug)
       .then((data) => {
-        data.all_tweet_count = Number(data.tweet_count) + Number(data.retweet_count);
-        this.setState({ user: data, userLoaded: true });
-        if (this.props.loggedIn) {
-          this.fetchFollow(data.id);
+        if (this._isMounted) {
+          data.all_tweet_count = Number(data.tweet_count) + Number(data.retweet_count);
+          this.setState({ user: data, userLoaded: true });
+          if (this.props.loggedIn) {
+            this.fetchFollow(data.id);
+          }
         }
       }).catch(() => {
-        this.props.displayMessage('Oops! Something went wrong loading this page!');
+        if (this._isMounted) {
+          this.props.displayMessage('Oops! Something went wrong loading this page!');
+        }
       });
   }
 
@@ -94,7 +96,9 @@ export default class UserProfile extends React.Component {
     return getFollowAPI(userID)
       .then((data) => {
         if (data.length > 0) {
-          this.setState({ isFollowing: true });
+          if (this._isMounted) {
+            this.setState({ isFollowing: true });
+          }
         }
       }).catch((err) => {
         console.log(err);
@@ -104,32 +108,40 @@ export default class UserProfile extends React.Component {
   createFollow(userID) {
     return createFollowAPI(userID)
       .then((data) => {
-        let updatedUser = this.state.user;
-        if (updatedUser.followers) {
-          updatedUser.followers = Number(updatedUser.followers) + 1;
-        } else {
-          updatedUser.followers = 1;
-        }
+        if (this._isMounted) {
+          let updatedUser = this.state.user;
+          if (updatedUser.followers) {
+            updatedUser.followers = Number(updatedUser.followers) + 1;
+          } else {
+            updatedUser.followers = 1;
+          }
 
-        this.setState({ isFollowing: true, user: updatedUser });
-        this.props.raiseSidebarFollowingCount();
+          this.setState({ isFollowing: true, user: updatedUser });
+          this.props.raiseSidebarFollowingCount();
+        }
       }).catch(() => {
-        this.props.displayMessage('Oops! Something went wrong!');
+        if (this._isMounted) {
+          this.props.displayMessage('Oops! Something went wrong!');
+        }
       });
   }
 
   deleteFollow(userID) {
     return deleteFollowAPI(userID)
       .then((data) => {
-        let updatedUser = this.state.user;
-        if (updatedUser.followers) {
-          updatedUser.followers = Number(updatedUser.followers) - 1;
-        }
+        if (this._isMounted) {
+          let updatedUser = this.state.user;
+          if (updatedUser.followers) {
+            updatedUser.followers = Number(updatedUser.followers) - 1;
+          }
 
-        this.setState({ isFollowing: false, user: updatedUser });
-        this.props.lowerSidebarFollowingCount();
+          this.setState({ isFollowing: false, user: updatedUser });
+          this.props.lowerSidebarFollowingCount();
+        }
       }).catch(() => {
-        this.props.displayMessage('Oops! Something went wrong!');
+        if (this._isMounted) {
+          this.props.displayMessage('Oops! Something went wrong!');
+        }
       });
   }
 

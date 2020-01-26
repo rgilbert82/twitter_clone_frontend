@@ -14,9 +14,7 @@ export default class UserFollowingsList extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    if (this._isMounted) {
-      this.fetchFollowings();
-    }
+    this.fetchFollowings();
   }
 
   componentWillUnmount() {
@@ -26,19 +24,27 @@ export default class UserFollowingsList extends React.Component {
   fetchFollowings() {
     return getUserFollowingsAPI(this.props.user_id)
       .then((data) => {
-        this.setState({ followings: data });
+        if (this._isMounted) {
+          this.setState({ followings: data });
+        }
       }).catch(() => {
-        this.props.displayMessage('There was an error loading the followings');
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error loading the followings');
+        }
       });
   }
 
   unfollowUser(userID) {
     return deleteFollowAPI(userID)
       .then(() => {
-        this.setState({ followings: this.state.followings.filter((fol) => { return fol.id !== userID }) });
-        this.props.deleteFollowFromList();
+        if (this._isMounted) {
+          this.setState({ followings: this.state.followings.filter((fol) => { return fol.id !== userID }) });
+          this.props.deleteFollowFromList();
+        }
       }).catch(() => {
-        this.props.displayMessage('There was an error unfollowing the user');
+        if (this._isMounted) {
+          this.props.displayMessage('There was an error unfollowing the user');
+        }
       });
   }
 
